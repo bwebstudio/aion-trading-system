@@ -1,0 +1,54 @@
+# Environment
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Data (large files — track schemas/samples, not raw data)
+data/raw/
+data/normalized/
+data/features/
+data/snapshots/
+# Keep samples tracked (small reference files)
+!data/samples/
+
+# Model artifacts (promote explicitly via scripts/promote_model.py)
+data/models/
+
+# Jupyter
+.ipynb_checkpoints/
+research/notebooks/.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/settings.json
+.idea/
+*.swp

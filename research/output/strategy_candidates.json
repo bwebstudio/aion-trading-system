@@ -1,0 +1,6295 @@
+{
+  "generated_at": "2026-04-14T22:37:46.100527+00:00",
+  "discovery_params": {
+    "assets": [
+      "us100",
+      "xauusd",
+      "btcusd"
+    ],
+    "min_samples": 100,
+    "min_assets": 2,
+    "max_conditions": 3,
+    "minimal_edge_threshold": 0.0002,
+    "snapshots": 3000,
+    "bars_limit": 120000,
+    "start_date": null,
+    "end_date": null
+  },
+  "execution_defaults": {
+    "stop_rule": {
+      "type": "atr_multiplier",
+      "period": 14,
+      "multiplier": 1.5
+    },
+    "exit_rule": {
+      "take_profit": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 2.5
+      },
+      "max_hold_bars": 20
+    }
+  },
+  "cross_asset": [
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 3928,
+        "mean_test_return": -0.001987109368201345,
+        "mean_score_across_assets": -0.12453961258414233,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 2124,
+            "test_mean_return": -0.0021309650037437677,
+            "test_win_rate": 0.08309037900874636,
+            "stability_score": 1.0541941433204376
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1804,
+            "test_mean_return": -0.0018432537326589227,
+            "test_win_rate": 0.11753371868978806,
+            "stability_score": 1.1666392078297474
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 3482,
+        "mean_test_return": -0.0020227491622790694,
+        "mean_score_across_assets": -0.11935934128558752,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1731,
+            "test_mean_return": -0.002075721276924014,
+            "test_win_rate": 0.08365758754863813,
+            "stability_score": 1.030287141754645
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1751,
+            "test_mean_return": -0.0019697770476341248,
+            "test_win_rate": 0.13653846153846153,
+            "stability_score": 1.3198716779636717
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2857,
+        "mean_test_return": -0.002074412943329662,
+        "mean_score_across_assets": -0.11087926380914975,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1436,
+            "test_mean_return": -0.0022807910572737455,
+            "test_win_rate": 0.0525,
+            "stability_score": 1.1876456721729074
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1421,
+            "test_mean_return": -0.0018680348293855786,
+            "test_win_rate": 0.11463414634146342,
+            "stability_score": 1.19928395567739
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2881,
+        "mean_test_return": -0.002014163590501994,
+        "mean_score_across_assets": -0.10811012518059762,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1433,
+            "test_mean_return": -0.0021825728472322226,
+            "test_win_rate": 0.07142857142857142,
+            "stability_score": 1.0087963849794561
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1448,
+            "test_mean_return": -0.0018457543337717652,
+            "test_win_rate": 0.12709832134292565,
+            "stability_score": 1.2086163904264227
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 3097,
+        "mean_test_return": -0.001927292556501925,
+        "mean_score_across_assets": -0.10725517276608577,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1556,
+            "test_mean_return": -0.0018661885987967253,
+            "test_win_rate": 0.1257995735607676,
+            "stability_score": 0.9723784728446012
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1541,
+            "test_mean_return": -0.0019883965142071247,
+            "test_win_rate": 0.1673728813559322,
+            "stability_score": 1.358606950690213
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2580,
+        "mean_test_return": -0.0020901024690829217,
+        "mean_score_across_assets": -0.10616403861321233,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1411,
+            "test_mean_return": -0.0023179356940090656,
+            "test_win_rate": 0.08225108225108226,
+            "stability_score": 0.9470488490152049
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1169,
+            "test_mean_return": -0.0018622692441567779,
+            "test_win_rate": 0.11586452762923351,
+            "stability_score": 1.0470558765502336
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_5_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_5_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_5_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 3121,
+        "mean_test_return": -0.0018830138724297285,
+        "mean_score_across_assets": -0.10519628520904958,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1553,
+            "test_mean_return": -0.0017987864557653666,
+            "test_win_rate": 0.1390593047034765,
+            "stability_score": 0.8363993725160741
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1568,
+            "test_mean_return": -0.0019672412890940905,
+            "test_win_rate": 0.17745302713987474,
+            "stability_score": 1.3695224084634727
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=POS AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2146,
+        "mean_test_return": -0.002127941057551652,
+        "mean_score_across_assets": -0.09857674029867562,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1067,
+            "test_mean_return": -0.00236107362434268,
+            "test_win_rate": 0.04745762711864407,
+            "stability_score": 1.1304752735908876
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1079,
+            "test_mean_return": -0.0018948084907606244,
+            "test_win_rate": 0.10231023102310231,
+            "stability_score": 1.185555455118039
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2296,
+        "mean_test_return": -0.0020487045403569937,
+        "mean_score_across_assets": -0.0981669441018096,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1236,
+            "test_mean_return": -0.002166291233152151,
+            "test_win_rate": 0.0678391959798995,
+            "stability_score": 1.0948070692520202
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1060,
+            "test_mean_return": -0.0019311178475618362,
+            "test_win_rate": 0.09090909090909091,
+            "stability_score": 1.2186139170433044
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:range_compression_bin=FALSE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "range_compression_bin",
+          "FALSE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "range_compression_bin",
+            "equals": "FALSE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2496,
+        "mean_test_return": -0.0018933889805339277,
+        "mean_score_across_assets": -0.09459368314899169,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1258,
+            "test_mean_return": -0.0019333394011482596,
+            "test_win_rate": 0.12266666666666666,
+            "stability_score": 0.9349340101248503
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1238,
+            "test_mean_return": -0.0018534385599195957,
+            "test_win_rate": 0.16531165311653118,
+            "stability_score": 1.2371433082789964
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=NEG AND momentum_5_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "NEG"
+        ],
+        [
+          "momentum_5_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2386,
+        "mean_test_return": -0.0019287813338451087,
+        "mean_score_across_assets": -0.09421460118803937,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1187,
+            "test_mean_return": -0.0018116558203473687,
+            "test_win_rate": 0.14285714285714285,
+            "stability_score": 0.8724470196878522
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1199,
+            "test_mean_return": -0.0020459068473428488,
+            "test_win_rate": 0.1726027397260274,
+            "stability_score": 1.3872019295252216
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1932,
+        "mean_test_return": -0.002044081804342568,
+        "mean_score_across_assets": -0.08984663853998835,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1040,
+            "test_mean_return": -0.0023995719384402037,
+            "test_win_rate": 0.04153354632587859,
+            "stability_score": 1.3208724685857953
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 892,
+            "test_mean_return": -0.0016885916702449322,
+            "test_win_rate": 0.09876543209876543,
+            "stability_score": 1.0254698779678224
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_high_bin=FAR",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_high_bin",
+          "FAR"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "FAR"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2585,
+        "mean_test_return": -0.001746409630868584,
+        "mean_score_across_assets": -0.08879252197045398,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1150,
+            "test_mean_return": -0.001459358143620193,
+            "test_win_rate": 0.12903225806451613,
+            "stability_score": 0.8615953484622266
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 1435,
+            "test_mean_return": -0.002033461118116975,
+            "test_win_rate": 0.155902004454343,
+            "stability_score": 1.2763306197430444
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1924,
+        "mean_test_return": -0.002020284009631723,
+        "mean_score_across_assets": -0.08861657492083334,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1028,
+            "test_mean_return": -0.00231245718896389,
+            "test_win_rate": 0.06230529595015576,
+            "stability_score": 1.108727654348634
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 896,
+            "test_mean_return": -0.0017281108302995563,
+            "test_win_rate": 0.10756972111553785,
+            "stability_score": 1.0560196179853918
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_3_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2004,
+        "mean_test_return": -0.0019612223841249943,
+        "mean_score_across_assets": -0.08779619611888562,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1096,
+            "test_mean_return": -0.001971351681277156,
+            "test_win_rate": 0.10136986301369863,
+            "stability_score": 1.0061731842778752
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 908,
+            "test_mean_return": -0.0019510930869728327,
+            "test_win_rate": 0.12686567164179105,
+            "stability_score": 1.2810361008131637
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=POS AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1753,
+        "mean_test_return": -0.0020950334146618843,
+        "mean_score_across_assets": -0.08771662476399704,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 866,
+            "test_mean_return": -0.002235304331406951,
+            "test_win_rate": 0.05,
+            "stability_score": 1.0836937628137915
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 887,
+            "test_mean_return": -0.0019547624979168177,
+            "test_win_rate": 0.12015503875968993,
+            "stability_score": 1.1949736371508652
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND distance_to_vwap_bin=MID",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1758,
+        "mean_test_return": -0.0020915638306178153,
+        "mean_score_across_assets": -0.08769615621434362,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 974,
+            "test_mean_return": -0.0023702126927673817,
+            "test_win_rate": 0.08797653958944282,
+            "stability_score": 0.915801309705627
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 784,
+            "test_mean_return": -0.0018129149684682488,
+            "test_win_rate": 0.0932475884244373,
+            "stability_score": 1.050569022597984
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_5_bin=POS AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_5_bin",
+          "POS"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1751,
+        "mean_test_return": -0.0020872129825875163,
+        "mean_score_across_assets": -0.08733932687356805,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 899,
+            "test_mean_return": -0.0022170788142830133,
+            "test_win_rate": 0.04219409282700422,
+            "stability_score": 1.1576228681272198
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 852,
+            "test_mean_return": -0.0019573471508920193,
+            "test_win_rate": 0.11067193675889328,
+            "stability_score": 1.10917253941216
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_5_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1996,
+        "mean_test_return": -0.001942494825925678,
+        "mean_score_across_assets": -0.08678409504569987,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 1084,
+            "test_mean_return": -0.0019055657321587205,
+            "test_win_rate": 0.11796246648793565,
+            "stability_score": 0.8542136730673651
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 912,
+            "test_mean_return": -0.0019794239196926355,
+            "test_win_rate": 0.13405797101449277,
+            "stability_score": 1.3092090410618846
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1660,
+        "mean_test_return": -0.0020930927130393684,
+        "mean_score_across_assets": -0.08527908064073109,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 831,
+            "test_mean_return": -0.00246327999047935,
+            "test_win_rate": 0.14166666666666666,
+            "stability_score": 1.0784570705114351
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 829,
+            "test_mean_return": -0.0017229054355993867,
+            "test_win_rate": 0.14583333333333334,
+            "stability_score": 0.7901301514384824
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1421,
+        "mean_test_return": -0.00222995673539117,
+        "mean_score_across_assets": -0.08406079173002753,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 765,
+            "test_mean_return": -0.00251724268309772,
+            "test_win_rate": 0.040983606557377046,
+            "stability_score": 0.9637624825202596
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 656,
+            "test_mean_return": -0.0019426707876846194,
+            "test_win_rate": 0.0967741935483871,
+            "stability_score": 0.9827966279376567
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1551,
+        "mean_test_return": -0.002110435161739588,
+        "mean_score_across_assets": -0.08311471363740265,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 845,
+            "test_mean_return": -0.0023752832785248756,
+            "test_win_rate": 0.06761565836298933,
+            "stability_score": 1.0415877996025293
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 706,
+            "test_mean_return": -0.0018455870449543,
+            "test_win_rate": 0.12058823529411765,
+            "stability_score": 1.0210205599454476
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=NEG AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "NEG"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1729,
+        "mean_test_return": -0.001960251305717975,
+        "mean_score_across_assets": -0.08150969131908699,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 865,
+            "test_mean_return": -0.0019359405850991607,
+            "test_win_rate": 0.11313868613138686,
+            "stability_score": 0.9857680270629718
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 864,
+            "test_mean_return": -0.001984562026336789,
+            "test_win_rate": 0.15267175572519084,
+            "stability_score": 1.478205705508455
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND momentum_3_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1393,
+        "mean_test_return": -0.00215825077611953,
+        "mean_score_across_assets": -0.08055221072559357,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 744,
+            "test_mean_return": -0.002465700265020132,
+            "test_win_rate": 0.055776892430278883,
+            "stability_score": 0.8945249518532283
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 649,
+            "test_mean_return": -0.0018508012872189283,
+            "test_win_rate": 0.10197368421052631,
+            "stability_score": 0.961644167882715
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1458,
+        "mean_test_return": -0.002101134799886495,
+        "mean_score_across_assets": -0.08022923992008613,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 777,
+            "test_mean_return": -0.0024025538004934788,
+            "test_win_rate": 0.039473684210526314,
+            "stability_score": 1.1990975123371006
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 681,
+            "test_mean_return": -0.001799715799279511,
+            "test_win_rate": 0.08648648648648649,
+            "stability_score": 1.0652167022647492
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:time_of_day_bucket=T_12_16",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "time_of_day_bucket",
+          "T_12_16"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_12_16"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 2878,
+        "mean_test_return": -0.0014510274534889807,
+        "mean_score_across_assets": -0.07784326156130114,
+        "sign_agreement": true,
+        "assets_found": [
+          "US100.cash",
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "US100.cash",
+            "sample_size": 960,
+            "test_mean_return": -0.0004039988561999053,
+            "test_win_rate": 0.32083333333333336,
+            "stability_score": 1.0842431443054699
+          },
+          {
+            "asset": "XAUUSD",
+            "sample_size": 958,
+            "test_mean_return": -0.0019516261527314782,
+            "test_win_rate": 0.07449856733524356,
+            "stability_score": 0.9343097834913204
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 960,
+            "test_mean_return": -0.0019974573515355587,
+            "test_win_rate": 0.14040114613180515,
+            "stability_score": 1.4727594873864596
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=NEG AND momentum_5_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_3_bin",
+          "NEG"
+        ],
+        [
+          "momentum_5_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1530,
+        "mean_test_return": -0.001982636225875467,
+        "mean_score_across_assets": -0.07755124111421548,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 833,
+            "test_mean_return": -0.0018437841208651662,
+            "test_win_rate": 0.11785714285714285,
+            "stability_score": 0.8416097728427286
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 697,
+            "test_mean_return": -0.002121488330885768,
+            "test_win_rate": 0.12380952380952381,
+            "stability_score": 1.3884987300153422
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND range_compression_bin=FALSE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "range_compression_bin",
+          "FALSE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "FALSE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1632,
+        "mean_test_return": -0.00190392613876611,
+        "mean_score_across_assets": -0.07691484576297988,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 888,
+            "test_mean_return": -0.0020821462385356426,
+            "test_win_rate": 0.10416666666666667,
+            "stability_score": 1.0005120733286321
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 744,
+            "test_mean_return": -0.0017257060389965773,
+            "test_win_rate": 0.15315315315315314,
+            "stability_score": 1.0970255903532036
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND session_bin=LONDON",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "session_bin",
+          "LONDON"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "session_bin",
+            "equals": "LONDON"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1801,
+        "mean_test_return": -0.001806492218747735,
+        "mean_score_across_assets": -0.07666426064111884,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 934,
+            "test_mean_return": -0.0021110482048243284,
+            "test_win_rate": 0.05714285714285714,
+            "stability_score": 1.2082617277659382
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 867,
+            "test_mean_return": -0.0015019362326711416,
+            "test_win_rate": 0.15384615384615385,
+            "stability_score": 1.101911632070186
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND momentum_3_bin=POS AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1085,
+        "mean_test_return": -0.002280995366163552,
+        "mean_score_across_assets": -0.0751344777622009,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 579,
+            "test_mean_return": -0.0025986111722886562,
+            "test_win_rate": 0.03225806451612903,
+            "stability_score": 0.9396338333005837
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 506,
+            "test_mean_return": -0.0019633795600384474,
+            "test_win_rate": 0.08974358974358974,
+            "stability_score": 0.9533258010732679
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=POS AND momentum_5_bin=POS AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1272,
+        "mean_test_return": -0.0020999283296987414,
+        "mean_score_across_assets": -0.07489417277142696,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 638,
+            "test_mean_return": -0.0022384123876690865,
+            "test_win_rate": 0.03636363636363636,
+            "stability_score": 1.1199740914685326
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 634,
+            "test_mean_return": -0.0019614442717283964,
+            "test_win_rate": 0.09497206703910614,
+            "stability_score": 1.0961770801250559
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=POS AND session_bin=LONDON",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "session_bin",
+          "LONDON"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "session_bin",
+            "equals": "LONDON"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1285,
+        "mean_test_return": -0.002035308221820742,
+        "mean_score_across_assets": -0.07295948349452096,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 627,
+            "test_mean_return": -0.0022362140007317066,
+            "test_win_rate": 0.04666666666666667,
+            "stability_score": 1.1022378106148016
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 658,
+            "test_mean_return": -0.0018344024429097772,
+            "test_win_rate": 0.16556291390728478,
+            "stability_score": 1.3444867661791045
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_high_bin=NEAR AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_high_bin",
+          "NEAR"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "NEAR"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1273,
+        "mean_test_return": -0.0020355918677523732,
+        "mean_score_across_assets": -0.0726281378177347,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 642,
+            "test_mean_return": -0.00226378021761775,
+            "test_win_rate": 0.05363984674329502,
+            "stability_score": 1.0060266226794088
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 631,
+            "test_mean_return": -0.0018074035178869963,
+            "test_win_rate": 0.0958904109589041,
+            "stability_score": 1.3581020781952293
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_high_bin=NEAR AND momentum_3_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_high_bin",
+          "NEAR"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "NEAR"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1262,
+        "mean_test_return": -0.0020001220400445163,
+        "mean_score_across_assets": -0.07105361410189251,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 636,
+            "test_mean_return": -0.002250740071758628,
+            "test_win_rate": 0.07063197026022305,
+            "stability_score": 1.0046558656486722
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 626,
+            "test_mean_return": -0.0017495040083304048,
+            "test_win_rate": 0.12837837837837837,
+            "stability_score": 1.336102691635967
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1150,
+        "mean_test_return": -0.002082355262245983,
+        "mean_score_across_assets": -0.07061610265324805,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 610,
+            "test_mean_return": -0.002333811018615961,
+            "test_win_rate": 0.03867403314917127,
+            "stability_score": 1.215803486923763
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 540,
+            "test_mean_return": -0.0018308995058760047,
+            "test_win_rate": 0.08275862068965517,
+            "stability_score": 1.090451940414659
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=POS AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1168,
+        "mean_test_return": -0.002057953563053161,
+        "mean_score_across_assets": -0.07033265180166305,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 643,
+            "test_mean_return": -0.0024038301780819893,
+            "test_win_rate": 0.02702702702702703,
+            "stability_score": 1.330671999301951
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 525,
+            "test_mean_return": -0.0017120769480243325,
+            "test_win_rate": 0.0979020979020979,
+            "stability_score": 0.9777063110749457
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=NEG AND range_compression_bin=FALSE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_3_bin",
+          "NEG"
+        ],
+        [
+          "range_compression_bin",
+          "FALSE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "FALSE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1368,
+        "mean_test_return": -0.001880679337773472,
+        "mean_score_across_assets": -0.06955971626919127,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 691,
+            "test_mean_return": -0.0017681781901046634,
+            "test_win_rate": 0.14358974358974358,
+            "stability_score": 0.9476025682194602
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 677,
+            "test_mean_return": -0.0019931804854422808,
+            "test_win_rate": 0.18571428571428572,
+            "stability_score": 1.2307049244255317
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND distance_to_vwap_bin=MID AND momentum_5_bin=POS",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 950,
+        "mean_test_return": -0.002251921221613884,
+        "mean_score_across_assets": -0.06940887356049816,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 521,
+            "test_mean_return": -0.002711882581934333,
+            "test_win_rate": 0.029411764705882353,
+            "stability_score": 1.0274835795952961
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 429,
+            "test_mean_return": -0.001791959861293435,
+            "test_win_rate": 0.07878787878787878,
+            "stability_score": 1.0221209835558955
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND momentum_3_bin=NEG",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "momentum_3_bin",
+          "NEG"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1187,
+        "mean_test_return": -0.0020089965546503663,
+        "mean_score_across_assets": -0.06921568980282354,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 667,
+            "test_mean_return": -0.0021421583369374275,
+            "test_win_rate": 0.11374407582938388,
+            "stability_score": 1.0135254226832289
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 520,
+            "test_mean_return": -0.001875834772363305,
+            "test_win_rate": 0.13229571984435798,
+            "stability_score": 1.1820030182955836
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND session_bin=LONDON AND time_of_day_bucket=T_08_12",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "session_bin",
+          "LONDON"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_08_12"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "session_bin",
+            "equals": "LONDON"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_08_12"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1456,
+        "mean_test_return": -0.0018032072111964226,
+        "mean_score_across_assets": -0.06880600188151972,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 718,
+            "test_mean_return": -0.0021044781897217035,
+            "test_win_rate": 0.07563025210084033,
+            "stability_score": 1.250982837828056
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 738,
+            "test_mean_return": -0.0015019362326711416,
+            "test_win_rate": 0.15384615384615385,
+            "stability_score": 1.1626341725322396
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND time_of_day_bucket=T_08_12",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_08_12"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_08_12"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1456,
+        "mean_test_return": -0.0018032072111964226,
+        "mean_score_across_assets": -0.06880600188151972,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 718,
+            "test_mean_return": -0.0021044781897217035,
+            "test_win_rate": 0.07563025210084033,
+            "stability_score": 1.250982837828056
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 738,
+            "test_mean_return": -0.0015019362326711416,
+            "test_win_rate": 0.15384615384615385,
+            "stability_score": 1.1626341725322396
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_high_bin=FAR AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_high_bin",
+          "FAR"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1513,
+        "mean_test_return": -0.0017676009447313845,
+        "mean_score_across_assets": -0.06875490542514419,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 661,
+            "test_mean_return": -0.0015232401201501489,
+            "test_win_rate": 0.14130434782608695,
+            "stability_score": 0.9948289099312027
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 852,
+            "test_mean_return": -0.00201196176931262,
+            "test_win_rate": 0.17037037037037037,
+            "stability_score": 1.2365058494029684
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:session_bin=NY_MID",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "session_bin",
+          "NY_MID"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "session_bin",
+            "equals": "NY_MID"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1658,
+        "mean_test_return": -0.0016874733846634626,
+        "mean_score_across_assets": -0.06871146287851146,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 829,
+            "test_mean_return": -0.0017945390427485108,
+            "test_win_rate": 0.15436241610738255,
+            "stability_score": 0.6961767073453162
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 829,
+            "test_mean_return": -0.0015804077265784144,
+            "test_win_rate": 0.15333333333333332,
+            "stability_score": 0.6849649091436031
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=NEG AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "momentum_3_bin",
+          "NEG"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "NEG"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1146,
+        "mean_test_return": -0.0020266418578103185,
+        "mean_score_across_assets": -0.06860714025466935,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 626,
+            "test_mean_return": -0.002026562811806798,
+            "test_win_rate": 0.09216589861751152,
+            "stability_score": 0.9930613655450752
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 520,
+            "test_mean_return": -0.002026720903813839,
+            "test_win_rate": 0.09868421052631579,
+            "stability_score": 1.3662514223120392
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND distance_to_vwap_bin=MID AND range_compression_bin=TRUE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "range_compression_bin",
+          "TRUE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1048,
+        "mean_test_return": -0.002108776883687824,
+        "mean_score_across_assets": -0.06826707158319145,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 580,
+            "test_mean_return": -0.0024138286244124174,
+            "test_win_rate": 0.07655502392344497,
+            "stability_score": 1.011871339007592
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 468,
+            "test_mean_return": -0.0018037251429632306,
+            "test_win_rate": 0.08287292817679558,
+            "stability_score": 1.0039694486134632
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_5_bin=POS AND range_compression_bin=FALSE",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_5_bin",
+          "POS"
+        ],
+        [
+          "range_compression_bin",
+          "FALSE"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "range_compression_bin",
+            "equals": "FALSE"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1106,
+        "mean_test_return": -0.0020487692090682685,
+        "mean_score_across_assets": -0.06813505361310723,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 537,
+            "test_mean_return": -0.0023734276182949543,
+            "test_win_rate": 0.06748466257668712,
+            "stability_score": 1.2299528653328837
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 569,
+            "test_mean_return": -0.0017241107998415828,
+            "test_win_rate": 0.12101910828025478,
+            "stability_score": 1.372071551173779
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_high_bin=NEAR AND distance_to_session_low_bin=FAR",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_high_bin",
+          "NEAR"
+        ],
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "NEAR"
+          },
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 980,
+        "mean_test_return": -0.0021760425297543406,
+        "mean_score_across_assets": -0.0681209062584584,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 556,
+            "test_mean_return": -0.0022118650376796722,
+            "test_win_rate": 0.09141274238227147,
+            "stability_score": 0.7936875198685304
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 424,
+            "test_mean_return": -0.002140220021829009,
+            "test_win_rate": 0.047619047619047616,
+            "stability_score": 1.2929108076607445
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_low_bin=FAR AND time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1123,
+        "mean_test_return": -0.00202827068278566,
+        "mean_score_across_assets": -0.06796976860379537,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 657,
+            "test_mean_return": -0.0023510796017944813,
+            "test_win_rate": 0.12437810945273632,
+            "stability_score": 1.1718424790331061
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 466,
+            "test_mean_return": -0.0017054617637768388,
+            "test_win_rate": 0.13452914798206278,
+            "stability_score": 1.0592717810868952
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:range_compression_bin=TRUE AND time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "range_compression_bin",
+          "TRUE"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 991,
+        "mean_test_return": -0.0021548270015046,
+        "mean_score_across_assets": -0.06783428256977135,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 499,
+            "test_mean_return": -0.002539608860388398,
+            "test_win_rate": 0.09523809523809523,
+            "stability_score": 1.074294752387103
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 492,
+            "test_mean_return": -0.001770045142620802,
+            "test_win_rate": 0.14788732394366197,
+            "stability_score": 0.8654757279165987
+          }
+        ]
+      }
+    },
+    {
+      "name": "SHORT:momentum_5_bin=NEG AND session_bin=LONDON",
+      "direction": "SHORT",
+      "pattern_key": [
+        [
+          "momentum_5_bin",
+          "NEG"
+        ],
+        [
+          "session_bin",
+          "LONDON"
+        ]
+      ],
+      "entry_rule": {
+        "type": "AND",
+        "conditions": [
+          {
+            "column": "momentum_5_bin",
+            "equals": "NEG"
+          },
+          {
+            "column": "session_bin",
+            "equals": "LONDON"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1373,
+        "mean_test_return": -0.0018258809577673674,
+        "mean_score_across_assets": -0.06765621971681657,
+        "sign_agreement": true,
+        "assets_found": [
+          "XAUUSD",
+          "BTCUSD"
+        ],
+        "per_asset": [
+          {
+            "asset": "XAUUSD",
+            "sample_size": 704,
+            "test_mean_return": -0.0019112731097266078,
+            "test_win_rate": 0.07368421052631578,
+            "stability_score": 0.9666894889008928
+          },
+          {
+            "asset": "BTCUSD",
+            "sample_size": 669,
+            "test_mean_return": -0.001740488805808127,
+            "test_win_rate": 0.19318181818181818,
+            "stability_score": 1.4373506774033926
+          }
+        ]
+      }
+    }
+  ],
+  "single_asset": {
+    "US100.cash": [
+      {
+        "name": "SHORT:range_compression_bin=FALSE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 401,
+          "mean_test_return": -0.0005542596918530762,
+          "mean_train_return": -0.00038329503149725497,
+          "train_win_rate": 0.4,
+          "test_win_rate": 0.24752475247524752,
+          "stability_score": 1.4460393334293602,
+          "score": -0.016049650832447512,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 960,
+          "mean_test_return": -0.0004039988561999053,
+          "mean_train_return": -0.0003726090944837779,
+          "train_win_rate": 0.4,
+          "test_win_rate": 0.32083333333333336,
+          "stability_score": 1.0842431443054699,
+          "score": -0.01357195580727519,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 438,
+          "mean_test_return": -0.000507910328451544,
+          "mean_train_return": -0.00040131420246325433,
+          "train_win_rate": 0.36809815950920244,
+          "test_win_rate": 0.29464285714285715,
+          "stability_score": 1.265617626622746,
+          "score": -0.013453231465177108,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 502,
+          "mean_test_return": -0.0004809988313354552,
+          "mean_train_return": -0.00038669328205287457,
+          "train_win_rate": 0.4338461538461538,
+          "test_win_rate": 0.3050847457627119,
+          "stability_score": 1.2438768751862768,
+          "score": -0.013405199254883416,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_low_bin=FAR AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "FAR"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 414,
+          "mean_test_return": -0.00043499123421497643,
+          "mean_train_return": -0.00035033473977819085,
+          "train_win_rate": 0.39714285714285713,
+          "test_win_rate": 0.234375,
+          "stability_score": 1.2416445896584065,
+          "score": -0.010989501087691297,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 449,
+          "mean_test_return": -0.0004601535911206156,
+          "mean_train_return": -0.00043043840560130775,
+          "train_win_rate": 0.35014836795252224,
+          "test_win_rate": 0.3125,
+          "stability_score": 1.069034698420548,
+          "score": -0.010423601215011092,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 511,
+          "mean_test_return": -0.00035486347042024136,
+          "mean_train_return": -0.0003217252669855952,
+          "train_win_rate": 0.44386422976501305,
+          "test_win_rate": 0.328125,
+          "stability_score": 1.1030015570276295,
+          "score": -0.008848056170608487,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS AND momentum_5_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 333,
+          "mean_test_return": -0.00044852259452454746,
+          "mean_train_return": -0.0004160345997661352,
+          "train_win_rate": 0.3548387096774194,
+          "test_win_rate": 0.3058823529411765,
+          "stability_score": 1.0780896463339218,
+          "score": -0.008823915035539606,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_low_bin=NEAR AND momentum_3_bin=NEG AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "NEAR"
+          ],
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "NEAR"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 243,
+          "mean_test_return": -0.00034922518534585834,
+          "mean_train_return": -0.00023318815510720015,
+          "train_win_rate": 0.4583333333333333,
+          "test_win_rate": 0.36,
+          "stability_score": 1.497611168051457,
+          "score": -0.008152818299116776,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 523,
+          "mean_test_return": -0.00033706147223711014,
+          "mean_train_return": -0.0003631135041359812,
+          "train_win_rate": 0.3670212765957447,
+          "test_win_rate": 0.3401360544217687,
+          "stability_score": 0.928253750956299,
+          "score": -0.007155280616844907,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 214,
+          "mean_test_return": -0.0005566391046158969,
+          "mean_train_return": -0.0006351120537146926,
+          "train_win_rate": 0.35074626865671643,
+          "test_win_rate": 0.3,
+          "stability_score": 0.8764423558963855,
+          "score": -0.0071368070778907305,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 225,
+          "mean_test_return": -0.0005170985241420567,
+          "mean_train_return": -0.0005669582751579583,
+          "train_win_rate": 0.3835616438356164,
+          "test_win_rate": 0.3291139240506329,
+          "stability_score": 0.9120574596040417,
+          "score": -0.007074353494410052,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG AND range_compression_bin=FALSE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 227,
+          "mean_test_return": -0.0003669338475447148,
+          "mean_train_return": -0.0003001933509949595,
+          "train_win_rate": 0.4491017964071856,
+          "test_win_rate": 0.2833333333333333,
+          "stability_score": 1.2223250326116515,
+          "score": -0.006757521083374755,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=NEG AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "NEG"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 522,
+          "mean_test_return": -0.00031307636527344584,
+          "mean_train_return": -0.000348858127836138,
+          "train_win_rate": 0.4263959390862944,
+          "test_win_rate": 0.34375,
+          "stability_score": 0.8974317646413008,
+          "score": -0.006419289645656435,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG AND range_compression_bin=TRUE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 284,
+          "mean_test_return": -0.0003442132438067347,
+          "mean_train_return": -0.00033837262890301645,
+          "train_win_rate": 0.4398148148148148,
+          "test_win_rate": 0.36764705882352944,
+          "stability_score": 1.0172608964343635,
+          "score": -0.005900911436267302,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=NEG AND range_compression_bin=FALSE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "NEG"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 237,
+          "mean_test_return": -0.00033142248867079616,
+          "mean_train_return": -0.0002920289698522538,
+          "train_win_rate": 0.441340782122905,
+          "test_win_rate": 0.29310344827586204,
+          "stability_score": 1.1348959277515265,
+          "score": -0.00579044825255682,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND momentum_5_bin=NEG AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 308,
+          "mean_test_return": -0.00031621131347492337,
+          "mean_train_return": -0.00030581463943235576,
+          "train_win_rate": 0.39090909090909093,
+          "test_win_rate": 0.3522727272727273,
+          "stability_score": 1.0339966525535391,
+          "score": -0.005738149977653551,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND range_compression_bin=TRUE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 287,
+          "mean_test_return": -0.00034077413147315383,
+          "mean_train_return": -0.0003492569085210562,
+          "train_win_rate": 0.4585635359116022,
+          "test_win_rate": 0.3584905660377358,
+          "stability_score": 0.9757119276929322,
+          "score": -0.005632862914552476,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:range_compression_bin=TRUE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "TRUE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 559,
+          "mean_test_return": -0.00029481659294106066,
+          "mean_train_return": -0.000364976265700534,
+          "train_win_rate": 0.4,
+          "test_win_rate": 0.37410071942446044,
+          "stability_score": 0.8077692185687496,
+          "score": -0.005630476192874767,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND range_compression_bin=TRUE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 304,
+          "mean_test_return": -0.00033596629509702325,
+          "mean_train_return": -0.00035258522257208824,
+          "train_win_rate": 0.35909090909090907,
+          "test_win_rate": 0.38095238095238093,
+          "stability_score": 0.9528655019803981,
+          "score": -0.005581669348044629,
+          "assets_found": []
+        }
+      }
+    ],
+    "XAUUSD": [
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 2124,
+          "mean_test_return": -0.0021309650037437677,
+          "mean_train_return": -0.002021416090428829,
+          "train_win_rate": 0.16063977746870653,
+          "test_win_rate": 0.08309037900874636,
+          "stability_score": 1.0541941433204376,
+          "score": -0.10353189728570898,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1436,
+          "mean_test_return": -0.0022807910572737455,
+          "mean_train_return": -0.0019204305717721581,
+          "train_win_rate": 0.1640926640926641,
+          "test_win_rate": 0.0525,
+          "stability_score": 1.1876456721729074,
+          "score": -0.10264779199985112,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1040,
+          "mean_test_return": -0.0023995719384402037,
+          "mean_train_return": -0.0018166567897424102,
+          "train_win_rate": 0.14718019257221457,
+          "test_win_rate": 0.04153354632587859,
+          "stability_score": 1.3208724685857953,
+          "score": -0.10221422314882676,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1731,
+          "mean_test_return": -0.002075721276924014,
+          "mean_train_return": -0.002014701720327139,
+          "train_win_rate": 0.17502054231717337,
+          "test_win_rate": 0.08365758754863813,
+          "stability_score": 1.030287141754645,
+          "score": -0.0889766090921885,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS AND momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1067,
+          "mean_test_return": -0.00236107362434268,
+          "mean_train_return": -0.002088567242026329,
+          "train_win_rate": 0.15414507772020725,
+          "test_win_rate": 0.04745762711864407,
+          "stability_score": 1.1304752735908876,
+          "score": -0.08718721534993114,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1236,
+          "mean_test_return": -0.002166291233152151,
+          "mean_train_return": -0.0019786967895925045,
+          "train_win_rate": 0.15990453460620524,
+          "test_win_rate": 0.0678391959798995,
+          "stability_score": 1.0948070692520202,
+          "score": -0.08338034169607533,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1433,
+          "mean_test_return": -0.0021825728472322226,
+          "mean_train_return": -0.002163541503250599,
+          "train_win_rate": 0.15695952615992104,
+          "test_win_rate": 0.07142857142857142,
+          "stability_score": 1.0087963849794561,
+          "score": -0.08334803404276299,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_low_bin=FAR",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "FAR"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "FAR"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1411,
+          "mean_test_return": -0.0023179356940090656,
+          "mean_train_return": -0.002447535516694188,
+          "train_win_rate": 0.1422550052687039,
+          "test_win_rate": 0.08225108225108226,
+          "stability_score": 0.9470488490152049,
+          "score": -0.08245884943938517,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1028,
+          "mean_test_return": -0.00231245718896389,
+          "mean_train_return": -0.002085685497149825,
+          "train_win_rate": 0.1485148514851485,
+          "test_win_rate": 0.06230529595015576,
+          "stability_score": 1.108727654348634,
+          "score": -0.08220441416179045,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=POS AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 643,
+          "mean_test_return": -0.0024038301780819893,
+          "mean_train_return": -0.0018064783653244376,
+          "train_win_rate": 0.1572052401746725,
+          "test_win_rate": 0.02702702702702703,
+          "stability_score": 1.330671999301951,
+          "score": -0.08111109937903971,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS AND momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 777,
+          "mean_test_return": -0.0024025538004934788,
+          "mean_train_return": -0.002003635047003627,
+          "train_win_rate": 0.14207650273224043,
+          "test_win_rate": 0.039473684210526314,
+          "stability_score": 1.1990975123371006,
+          "score": -0.08030417652615116,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:session_bin=LONDON",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "session_bin",
+            "LONDON"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "session_bin",
+              "equals": "LONDON"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1320,
+          "mean_test_return": -0.002063475316390395,
+          "mean_train_return": -0.0019721006974577904,
+          "train_win_rate": 0.16363636363636364,
+          "test_win_rate": 0.06060606060606061,
+          "stability_score": 1.0463336476937484,
+          "score": -0.0784434047010428,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND session_bin=LONDON",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "session_bin",
+            "LONDON"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "session_bin",
+              "equals": "LONDON"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 934,
+          "mean_test_return": -0.0021110482048243284,
+          "mean_train_return": -0.0017471779137849808,
+          "train_win_rate": 0.15508885298869143,
+          "test_win_rate": 0.05714285714285714,
+          "stability_score": 1.2082617277659382,
+          "score": -0.07795295945792245,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=POS AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 899,
+          "mean_test_return": -0.0022170788142830133,
+          "mean_train_return": -0.0019151995657011867,
+          "train_win_rate": 0.17371601208459214,
+          "test_win_rate": 0.04219409282700422,
+          "stability_score": 1.1576228681272198,
+          "score": -0.0769534465012937,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:time_of_day_bucket=T_16_20",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 831,
+          "mean_test_return": -0.00246327999047935,
+          "mean_train_return": -0.002284077927470207,
+          "train_win_rate": 0.18104906937394247,
+          "test_win_rate": 0.14166666666666666,
+          "stability_score": 1.0784570705114351,
+          "score": -0.07658031581163402,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=NEAR",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "NEAR"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "NEAR"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1226,
+          "mean_test_return": -0.002000537235289812,
+          "mean_train_return": -0.001948223914951086,
+          "train_win_rate": 0.17467248908296942,
+          "test_win_rate": 0.10204081632653061,
+          "stability_score": 1.0268518007284801,
+          "score": -0.07192827470397078,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_low_bin=FAR AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "FAR"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 845,
+          "mean_test_return": -0.0023752832785248756,
+          "mean_train_return": -0.0022804446052759886,
+          "train_win_rate": 0.15602836879432624,
+          "test_win_rate": 0.06761565836298933,
+          "stability_score": 1.0415877996025293,
+          "score": -0.0719183392662563,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=POS AND time_of_day_bucket=T_16_20",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 264,
+          "mean_test_return": -0.0031275362707674503,
+          "mean_train_return": -0.002213924890384078,
+          "train_win_rate": 0.15458937198067632,
+          "test_win_rate": 0.03508771929824561,
+          "stability_score": 1.41266593295533,
+          "score": -0.07178666711474234,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1556,
+          "mean_test_return": -0.0018661885987967253,
+          "mean_train_return": -0.0019191998289898038,
+          "train_win_rate": 0.19503219871205152,
+          "test_win_rate": 0.1257995735607676,
+          "stability_score": 0.9723784728446012,
+          "score": -0.0715806542843848,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 866,
+          "mean_test_return": -0.002235304331406951,
+          "mean_train_return": -0.002062671585008502,
+          "train_win_rate": 0.1597444089456869,
+          "test_win_rate": 0.05,
+          "stability_score": 1.0836937628137915,
+          "score": -0.07128566075258484,
+          "assets_found": []
+        }
+      }
+    ],
+    "BTCUSD": [
+      {
+        "name": "SHORT:range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1751,
+          "mean_test_return": -0.0019697770476341248,
+          "mean_train_return": -0.0014924004208296537,
+          "train_win_rate": 0.22339561332250202,
+          "test_win_rate": 0.13653846153846153,
+          "stability_score": 1.3198716779636717,
+          "score": -0.10879072111410368,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1568,
+          "mean_test_return": -0.0019672412890940905,
+          "mean_train_return": -0.0014364433009177446,
+          "train_win_rate": 0.22130394857667585,
+          "test_win_rate": 0.17745302713987474,
+          "stability_score": 1.3695224084634727,
+          "score": -0.10668412579065376,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1541,
+          "mean_test_return": -0.0019883965142071247,
+          "mean_train_return": -0.0014635553816333413,
+          "train_win_rate": 0.2207670720299345,
+          "test_win_rate": 0.1673728813559322,
+          "stability_score": 1.358606950690213,
+          "score": -0.1060469407828854,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1435,
+          "mean_test_return": -0.002033461118116975,
+          "mean_train_return": -0.0015932087553665042,
+          "train_win_rate": 0.1947261663286004,
+          "test_win_rate": 0.155902004454343,
+          "stability_score": 1.2763306197430444,
+          "score": -0.09831618349747519,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG AND momentum_5_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1199,
+          "mean_test_return": -0.0020459068473428488,
+          "mean_train_return": -0.001474844291806221,
+          "train_win_rate": 0.22541966426858512,
+          "test_win_rate": 0.1726027397260274,
+          "stability_score": 1.3872019295252216,
+          "score": -0.09827320763105651,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1804,
+          "mean_test_return": -0.0018432537326589227,
+          "mean_train_return": -0.0015799689572304487,
+          "train_win_rate": 0.20077821011673153,
+          "test_win_rate": 0.11753371868978806,
+          "stability_score": 1.1666392078297474,
+          "score": -0.0913355727557897,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 960,
+          "mean_test_return": -0.0019974573515355587,
+          "mean_train_return": -0.001356268534436822,
+          "train_win_rate": 0.24058919803600654,
+          "test_win_rate": 0.14040114613180515,
+          "stability_score": 1.4727594873864596,
+          "score": -0.09114754189700908,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 864,
+          "mean_test_return": -0.001984562026336789,
+          "mean_train_return": -0.0013425479410216212,
+          "train_win_rate": 0.23255813953488372,
+          "test_win_rate": 0.15267175572519084,
+          "stability_score": 1.478205705508455,
+          "score": -0.086229610130636,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1448,
+          "mean_test_return": -0.0018457543337717652,
+          "mean_train_return": -0.001527163083665073,
+          "train_win_rate": 0.21144519883608148,
+          "test_win_rate": 0.12709832134292565,
+          "stability_score": 1.2086163904264227,
+          "score": -0.08488806953862815,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1421,
+          "mean_test_return": -0.0018680348293855786,
+          "mean_train_return": -0.0015576251316815615,
+          "train_win_rate": 0.21068249258160238,
+          "test_win_rate": 0.11463414634146342,
+          "stability_score": 1.19928395567739,
+          "score": -0.0844508513280422,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:range_compression_bin=FALSE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "FALSE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1238,
+          "mean_test_return": -0.0018534385599195957,
+          "mean_train_return": -0.0014981599524617195,
+          "train_win_rate": 0.20598388952819333,
+          "test_win_rate": 0.16531165311653118,
+          "stability_score": 1.2371433082789964,
+          "score": -0.08067863221391139,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 681,
+          "mean_test_return": -0.0020977575331926346,
+          "mean_train_return": -0.0014364542439579964,
+          "train_win_rate": 0.23819742489270387,
+          "test_win_rate": 0.06046511627906977,
+          "stability_score": 1.4603719833167033,
+          "score": -0.07994518979311845,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_5_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 912,
+          "mean_test_return": -0.0019794239196926355,
+          "mean_train_return": -0.0015119235031306744,
+          "train_win_rate": 0.19811320754716982,
+          "test_win_rate": 0.13405797101449277,
+          "stability_score": 1.3092090410618846,
+          "score": -0.07826097046048963,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=NEG AND momentum_5_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 697,
+          "mean_test_return": -0.002121488330885768,
+          "mean_train_return": -0.0015279008075594902,
+          "train_win_rate": 0.2032854209445585,
+          "test_win_rate": 0.12380952380952381,
+          "stability_score": 1.3884987300153422,
+          "score": -0.0777682852705384,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1060,
+          "mean_test_return": -0.0019311178475618362,
+          "mean_train_return": -0.0015846838941797614,
+          "train_win_rate": 0.20576671035386632,
+          "test_win_rate": 0.09090909090909091,
+          "stability_score": 1.2186139170433044,
+          "score": -0.0766174765190483,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND momentum_5_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 783,
+          "mean_test_return": -0.0020079733803868294,
+          "mean_train_return": -0.0014931134646758437,
+          "train_win_rate": 0.2283609576427256,
+          "test_win_rate": 0.1875,
+          "stability_score": 1.3448230344790053,
+          "score": -0.07556209166904575,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_3_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 908,
+          "mean_test_return": -0.0019510930869728327,
+          "mean_train_return": -0.0015230586286634207,
+          "train_win_rate": 0.2,
+          "test_win_rate": 0.12686567164179105,
+          "stability_score": 1.2810361008131637,
+          "score": -0.07531513920865883,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND momentum_3_bin=NEG",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "momentum_3_bin",
+            "NEG"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 762,
+          "mean_test_return": -0.002023607725277543,
+          "mean_train_return": -0.0015201142523437738,
+          "train_win_rate": 0.2198852772466539,
+          "test_win_rate": 0.18410041841004185,
+          "stability_score": 1.3312208093289453,
+          "score": -0.07436248805138997,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS AND momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1079,
+          "mean_test_return": -0.0018948084907606244,
+          "mean_train_return": -0.0015982453478500247,
+          "train_win_rate": 0.21262886597938144,
+          "test_win_rate": 0.10231023102310231,
+          "stability_score": 1.185555455118039,
+          "score": -0.07379006921220231,
+          "assets_found": []
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND range_compression_bin=TRUE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 852,
+          "mean_test_return": -0.00201196176931262,
+          "mean_train_return": -0.001627134857699275,
+          "train_win_rate": 0.1958762886597938,
+          "test_win_rate": 0.17037037037037037,
+          "stability_score": 1.2365058494029684,
+          "score": -0.07261656419167804,
+          "assets_found": []
+        }
+      }
+    ]
+  }
+}

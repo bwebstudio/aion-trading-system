@@ -1,0 +1,26 @@
+# aion/config/execution_config.yaml
+# ─────────────────────────────────────
+# Per-symbol parameters for the realistic ExecutionModel.
+#
+#   min_spread : minimum spread in price points (floor of estimate_spread)
+#   k_vol      : weight on bar range (volatility component of slippage)
+#   k_mom      : weight on bar momentum (|close - open| / range) * range
+#
+# Slippage formula:
+#   slippage = (k_vol * range + k_mom * momentum * range)
+#              * session_multiplier * entry_multiplier * uniform(0.8, 1.2)
+
+US100.cash:
+  min_spread: 1.5
+  k_vol: 0.05
+  k_mom: 0.05
+
+XAUUSD:
+  min_spread: 8
+  k_vol: 0.06
+  k_mom: 0.06
+
+BTCUSD:
+  min_spread: 80
+  k_vol: 0.08
+  k_mom: 0.08
