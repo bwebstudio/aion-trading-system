@@ -84,33 +84,55 @@ EXTREME_VWAP_BINS: frozenset[str] = frozenset(
 )
 
 
+def _step_regimes(col: str, val: str, direction: str) -> set[str]:
+    """
+    Regime(s) implied by a single (column, bin_value) step given the
+    trade direction.  Shared by pattern- and sequence-based regime mapping.
+    """
+    col_l = col.lower()
+    val_u = str(val).upper()
+    dir_u = direction.upper()
+    out: set[str] = set()
+
+    if col_l in ("momentum_3_bin", "momentum_5_bin"):
+        if val_u == "POS":
+            out.add(TREND_UP if dir_u == "LONG" else RANGE)
+        elif val_u == "NEG":
+            out.add(TREND_DOWN if dir_u == "SHORT" else RANGE)
+    elif col_l == "range_compression_bin":
+        if val_u == "TRUE":
+            out.add(COMPRESSION)
+    elif col_l == "distance_to_vwap_bin" and val_u in EXTREME_VWAP_BINS:
+        out.add(RANGE)
+
+    return out
+
+
 def allowed_regimes_for(candidate: StrategyCandidate) -> set[str]:
-    """Derive the set of regimes in which a candidate may fire."""
+    """Derive the set of regimes in which a pattern candidate may fire."""
     direction = candidate.direction.upper()
     allowed: set[str] = set()
-
     for col, val in candidate.pattern_key:
-        col_l = col.lower()
-        val_u = str(val).upper()
-
-        if col_l in ("momentum_3_bin", "momentum_5_bin"):
-            if val_u == "POS":
-                allowed.add(TREND_UP if direction == "LONG" else RANGE)
-            elif val_u == "NEG":
-                allowed.add(TREND_DOWN if direction == "SHORT" else RANGE)
-            continue
-
-        if col_l == "range_compression_bin":
-            if val_u == "TRUE":
-                allowed.add(COMPRESSION)
-            continue
-
-        if col_l == "distance_to_vwap_bin" and val_u in EXTREME_VWAP_BINS:
-            allowed.add(RANGE)
-            continue
-
+        allowed |= _step_regimes(col, val, direction)
     if not allowed:
-        # Un-opinionated pattern — allow everywhere.
+        allowed = set(ALL_REGIMES)
+    return allowed
+
+
+def allowed_regimes_for_sequence(sequence_key, direction: str) -> set[str]:
+    """
+    Derive the set of regimes for a sequential candidate.
+
+    Apply the per-step rule to every step in the sequence and UNION
+    the results.  The intuition: a sequence touching TREND features is
+    trend-aware; a sequence touching COMPRESSION is compression-aware.
+    Un-opinionated sequences are allowed in every regime (the selector's
+    quality gate will still filter weak ones).
+    """
+    allowed: set[str] = set()
+    for col, val in sequence_key:
+        allowed |= _step_regimes(col, val, direction)
+    if not allowed:
         allowed = set(ALL_REGIMES)
     return allowed
 
@@ -176,7 +198,12 @@ class StrategySelector:
             r: [] for r in ALL_REGIMES
         }
         for cand in self._candidates:
-            for regime in allowed_regimes_for(cand):
+            # UnifiedCandidate exposes .allowed_regimes directly;
+            # a plain pattern StrategyCandidate falls back to the helper.
+            regimes = getattr(cand, "allowed_regimes", None)
+            if regimes is None:
+                regimes = allowed_regimes_for(cand)
+            for regime in regimes:
                 buckets[regime].append(cand)
         # Sort each bucket by |edge| descending.
         for regime, lst in buckets.items():
@@ -259,6 +286,7 @@ class StrategySelector:
 __all__ = [
     "StrategySelector",
     "allowed_regimes_for",
+    "allowed_regimes_for_sequence",
     "EXTREME_VWAP_BINS",
     "NO_TRADE",
 ]

@@ -1,0 +1,550 @@
+{
+  "generated_at": "2026-04-15T18:01:55.538717+00:00",
+  "source_input": "research\\output\\sequential_edges.json",
+  "asset": "BTCUSD",
+  "execution_defaults": {
+    "stop_rule": {
+      "type": "atr_multiplier",
+      "period": 14,
+      "multiplier": 1.5
+    },
+    "exit_rule": {
+      "take_profit": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 2.5
+      },
+      "max_hold_bars": 20
+    }
+  },
+  "filter_thresholds": {
+    "min_trades": 50,
+    "min_profit_factor": 1.5,
+    "min_expectancy": 0.0,
+    "max_drawdown_abs": 0.04
+  },
+  "n_candidates_before_filter": 100,
+  "n_candidates_after_filter": 8,
+  "candidates": [
+    {
+      "name": "SHORT:distance_to_vwap_bin=MID -> distance_to_session_high_bin=FAR",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "distance_to_vwap_bin",
+          "MID"
+        ],
+        [
+          "distance_to_session_high_bin",
+          "FAR"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "distance_to_vwap_bin",
+            "equals": "MID"
+          },
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "FAR"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 924,
+        "mean_return": -0.0017752040876075625,
+        "expectancy": -0.0017752040876075625,
+        "winrate": 0.19264069264069264,
+        "profit_factor": 0.1538040490261797,
+        "score": -0.05396153247134986,
+        "length": 2,
+        "train_n": 596,
+        "test_n": 328,
+        "train_mean": -0.0015553194098174572,
+        "test_mean": -0.0021747504360973835,
+        "stability": 1.3982661197243254
+      },
+      "backtest": {
+        "total_trades": 138,
+        "winrate": 0.5072463768115942,
+        "expectancy": 0.000369463677975987,
+        "avg_return": 0.000369463677975987,
+        "profit_factor": 1.5354489375858709,
+        "max_drawdown": -0.024537846898305488,
+        "total_return": 0.0509859875606862
+      }
+    },
+    {
+      "name": "SHORT:distance_to_session_high_bin=FAR -> time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "distance_to_session_high_bin",
+          "FAR"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "distance_to_session_high_bin",
+            "equals": "FAR"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 881,
+        "mean_return": -0.001771601033397019,
+        "expectancy": -0.001771601033397019,
+        "winrate": 0.2043132803632236,
+        "profit_factor": 0.16203509208491387,
+        "score": -0.05258403146555913,
+        "length": 2,
+        "train_n": 609,
+        "test_n": 272,
+        "train_mean": -0.0018896582769230008,
+        "test_mean": -0.0015072744572535157,
+        "stability": 0.797643931530237
+      },
+      "backtest": {
+        "total_trades": 103,
+        "winrate": 0.5048543689320388,
+        "expectancy": 0.00036266321559193243,
+        "avg_return": 0.00036266321559193243,
+        "profit_factor": 1.5065266969598516,
+        "max_drawdown": -0.008650899847427382,
+        "total_return": 0.03735431120596904
+      }
+    },
+    {
+      "name": "SHORT:time_of_day_bucket=T_16_20 -> distance_to_session_low_bin=FAR",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ],
+        [
+          "distance_to_session_low_bin",
+          "FAR"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          },
+          {
+            "column": "distance_to_session_low_bin",
+            "equals": "FAR"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 1050,
+        "mean_return": -0.0015860737767070532,
+        "expectancy": -0.0015860737767070532,
+        "winrate": 0.17714285714285713,
+        "profit_factor": 0.1572685192139146,
+        "score": -0.0513946643769143,
+        "length": 2,
+        "train_n": 727,
+        "test_n": 323,
+        "train_mean": -0.0015670674620196223,
+        "test_mean": -0.001628852798603475,
+        "stability": 1.0394273623065495
+      },
+      "backtest": {
+        "total_trades": 120,
+        "winrate": 0.48333333333333334,
+        "expectancy": 0.0003343026046470958,
+        "avg_return": 0.0003343026046470958,
+        "profit_factor": 1.522134940435953,
+        "max_drawdown": -0.016151441933118245,
+        "total_return": 0.040116312557651496
+      }
+    },
+    {
+      "name": "SHORT:momentum_5_bin=POS -> time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "momentum_5_bin",
+          "POS"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 662,
+        "mean_return": -0.0019624666310846806,
+        "expectancy": -0.0019624666310846806,
+        "winrate": 0.14501510574018128,
+        "profit_factor": 0.10470297572636754,
+        "score": -0.05049301173544718,
+        "length": 2,
+        "train_n": 476,
+        "test_n": 186,
+        "train_mean": -0.0020160216372460127,
+        "test_mean": -0.0018254119204357266,
+        "stability": 0.9054525441152167
+      },
+      "backtest": {
+        "total_trades": 130,
+        "winrate": 0.5,
+        "expectancy": 0.0003493070038631949,
+        "avg_return": 0.0003493070038631949,
+        "profit_factor": 1.5048010736710407,
+        "max_drawdown": -0.012444477658587024,
+        "total_return": 0.04540991050221534
+      }
+    },
+    {
+      "name": "SHORT:time_of_day_bucket=T_16_20 -> momentum_5_bin=POS",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ],
+        [
+          "momentum_5_bin",
+          "POS"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          },
+          {
+            "column": "momentum_5_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 655,
+        "mean_return": -0.0019616498611867428,
+        "expectancy": -0.0019616498611867428,
+        "winrate": 0.15419847328244274,
+        "profit_factor": 0.10820746499264366,
+        "score": -0.05020444170111394,
+        "length": 2,
+        "train_n": 470,
+        "test_n": 185,
+        "train_mean": -0.002033321652561426,
+        "test_mean": -0.0017795650055631995,
+        "stability": 0.8752009320913083
+      },
+      "backtest": {
+        "total_trades": 137,
+        "winrate": 0.49635036496350365,
+        "expectancy": 0.00045625085188114094,
+        "avg_return": 0.00045625085188114094,
+        "profit_factor": 1.6995544825049382,
+        "max_drawdown": -0.012815579799217864,
+        "total_return": 0.06250636670771631
+      }
+    },
+    {
+      "name": "SHORT:momentum_3_bin=POS -> time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "momentum_3_bin",
+          "POS"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 681,
+        "mean_return": -0.0018779081292450428,
+        "expectancy": -0.0018779081292450428,
+        "winrate": 0.16152716593245228,
+        "profit_factor": 0.11627290249642318,
+        "score": -0.04900584678814788,
+        "length": 2,
+        "train_n": 488,
+        "test_n": 193,
+        "train_mean": -0.0019001582404598594,
+        "test_mean": -0.0018216490279883146,
+        "stability": 0.9586828029372203
+      },
+      "backtest": {
+        "total_trades": 136,
+        "winrate": 0.49264705882352944,
+        "expectancy": 0.00036983052093493644,
+        "avg_return": 0.00036983052093493644,
+        "profit_factor": 1.5675788771500885,
+        "max_drawdown": -0.012185468509553706,
+        "total_return": 0.050296950847151356
+      }
+    },
+    {
+      "name": "SHORT:range_compression_bin=TRUE -> time_of_day_bucket=T_16_20",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "range_compression_bin",
+          "TRUE"
+        ],
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "range_compression_bin",
+            "equals": "TRUE"
+          },
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 852,
+        "mean_return": -0.0016710570780560374,
+        "expectancy": -0.0016710570780560374,
+        "winrate": 0.18544600938967137,
+        "profit_factor": 0.15310779280785636,
+        "score": -0.04877655028719483,
+        "length": 2,
+        "train_n": 604,
+        "test_n": 248,
+        "train_mean": -0.0016904171789065003,
+        "test_mean": -0.0016239057295024395,
+        "stability": 0.9606538254378805
+      },
+      "backtest": {
+        "total_trades": 135,
+        "winrate": 0.48148148148148145,
+        "expectancy": 0.0003472270076098306,
+        "avg_return": 0.0003472270076098306,
+        "profit_factor": 1.5021659592241536,
+        "max_drawdown": -0.013560189980547966,
+        "total_return": 0.046875646027327134
+      }
+    },
+    {
+      "name": "SHORT:time_of_day_bucket=T_16_20 -> momentum_3_bin=POS",
+      "direction": "SHORT",
+      "sequence_key": [
+        [
+          "time_of_day_bucket",
+          "T_16_20"
+        ],
+        [
+          "momentum_3_bin",
+          "POS"
+        ]
+      ],
+      "length": 2,
+      "entry_rule": {
+        "type": "SEQUENCE",
+        "trigger": "after_last_step",
+        "steps": [
+          {
+            "column": "time_of_day_bucket",
+            "equals": "T_16_20"
+          },
+          {
+            "column": "momentum_3_bin",
+            "equals": "POS"
+          }
+        ]
+      },
+      "stop_rule": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 1.5
+      },
+      "exit_rule": {
+        "take_profit": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 2.5
+        },
+        "max_hold_bars": 20
+      },
+      "expected_edge": {
+        "sample_size": 677,
+        "mean_return": -0.0018272383604198694,
+        "expectancy": -0.0018272383604198694,
+        "winrate": 0.17725258493353027,
+        "profit_factor": 0.1315456718121188,
+        "score": -0.04754332358449247,
+        "length": 2,
+        "train_n": 484,
+        "test_n": 193,
+        "train_mean": -0.0018874005181714892,
+        "test_mean": -0.001676365383900702,
+        "stability": 0.8881874131966236
+      },
+      "backtest": {
+        "total_trades": 138,
+        "winrate": 0.4927536231884058,
+        "expectancy": 0.00041593659167022437,
+        "avg_return": 0.00041593659167022437,
+        "profit_factor": 1.636560158128189,
+        "max_drawdown": -0.015584430891505494,
+        "total_return": 0.057399249650490966
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-04-16T12:31:33.246811+00:00",
+  "source_input": "research\\output\\sequential_edges.json",
+  "asset": "BTCUSD",
+  "execution_defaults": {
+    "stop_rule": {
+      "type": "atr_multiplier",
+      "period": 14,
+      "multiplier": 1.5
+    },
+    "exit_rule": {
+      "take_profit": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 2.5
+      },
+      "max_hold_bars": 20
+    }
+  },
+  "filter_thresholds": {
+    "min_trades": 50,
+    "min_profit_factor": 1.3,
+    "min_expectancy": 0.0,
+    "max_drawdown_abs": 0.05
+  },
+  "n_candidates_before_filter": 100,
+  "n_candidates_after_filter": 0,
+  "candidates": []
+}

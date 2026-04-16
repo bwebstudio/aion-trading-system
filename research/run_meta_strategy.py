@@ -38,9 +38,17 @@ if str(_ROOT) not in sys.path:
 
 from aion.execution.execution_model import ExecutionModel
 
-from research.meta_strategy import CandidateFilter, backtest_meta
+from research.meta_strategy import (
+    CandidateFilter,
+    backtest_meta,
+    wrap_pattern,
+    wrap_sequential,
+)
 from research.pattern_discovery import FeatureBuilder
-from research.pattern_strategies import candidate_from_dict
+from research.pattern_strategies import candidate_from_dict as pattern_from_dict
+from research.sequential_strategies import (
+    candidate_from_dict as sequential_from_dict,
+)
 
 # Reuse multi-asset runner helpers (instrument specs, loader, filter).
 from research.run_pattern_discovery import (
@@ -56,19 +64,40 @@ from research.run_pattern_discovery import (
 from scripts.run_us100_replay import _build_snapshots
 
 
-DEFAULT_CANDIDATES = _ROOT / "research" / "output" / "strategy_candidates.json"
+DEFAULT_PATTERN_CANDIDATES = (
+    _ROOT / "research" / "output" / "strategy_candidates.json"
+)
+DEFAULT_SEQUENTIAL_BY_ASSET = {
+    "us100":  _ROOT / "research" / "output" / "sequential_strategy_candidates.json",
+    "xauusd": _ROOT / "research" / "output" / "sequential_strategy_candidates_xauusd.json",
+    "btcusd": _ROOT / "research" / "output" / "sequential_strategy_candidates_btcusd.json",
+}
 
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="AION Meta-Strategy backtest")
     p.add_argument("--asset", type=str, default="us100",
                    choices=sorted(ASSET_REGISTRY.keys()))
-    p.add_argument("--candidates", type=str, default=str(DEFAULT_CANDIDATES))
+    p.add_argument(
+        "--pattern-candidates",
+        type=str,
+        default=str(DEFAULT_PATTERN_CANDIDATES),
+        help="Path to pattern-based candidates JSON "
+             "(produced by generate_strategy_candidates.py).",
+    )
+    p.add_argument(
+        "--sequential-candidates",
+        type=str,
+        default=None,
+        help="Path to sequential candidates JSON "
+             "(produced by generate_sequential_strategy_candidates.py). "
+             "If omitted, a per-asset default is used.",
+    )
     p.add_argument(
         "--source",
         choices=("cross_asset", "single_asset", "auto"),
         default="auto",
-        help="Which candidate list to use from the JSON.  'auto' tries "
+        help="Which PATTERN candidate list to use: 'auto' tries "
              "cross_asset first, falls back to the asset's single_asset list.",
     )
     p.add_argument("--snapshots", type=int, default=3000)
@@ -76,6 +105,11 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--start-date", type=str, default=None)
     p.add_argument("--end-date", type=str, default=None)
     p.add_argument("--top-k-per-regime", type=int, default=1)
+    # Candidate-type toggles
+    p.add_argument("--no-patterns", action="store_true",
+                   help="Do not load pattern-based candidates.")
+    p.add_argument("--no-sequences", action="store_true",
+                   help="Do not load sequential candidates.")
     # Pre-filter thresholds
     p.add_argument("--no-prefilter", action="store_true",
                    help="Skip the pre-filter stage (pass all candidates through).")
@@ -89,10 +123,33 @@ def _parse_args() -> argparse.Namespace:
                         "regime, the selector returns NO_TRADE.")
     p.add_argument("--selector-min-expectancy", type=float, default=0.0,
                    help="If top candidate's expectancy <= this, NO_TRADE.")
+    # Edge-decay filter
+    p.add_argument(
+        "--edge-decay-report",
+        type=str,
+        default=None,
+        help="Path to research/output/edge_decay_<asset>.json.  When "
+             "provided, candidates with status DECAYING / BROKEN / "
+             "INSUFFICIENT_DATA are excluded before any other stage.",
+    )
     return p.parse_args()
 
 
-def _load_candidates(path: Path, asset_symbol: str, source: str) -> list:
+def _load_decay_statuses(path: Path) -> dict[str, str]:
+    """Build a {candidate_name → status} map from an edge_decay report."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    out: dict[str, str] = {}
+    for rep in data.get("reports", []):
+        name = rep.get("candidate_name")
+        status = rep.get("status")
+        if name and status:
+            out[name] = status
+    return out
+
+
+def _load_pattern_candidates(
+    path: Path, asset_symbol: str, source: str
+) -> tuple[list, int, int]:
     data = json.loads(path.read_text(encoding="utf-8"))
     cross = data.get("cross_asset", [])
     single = data.get("single_asset", {}).get(asset_symbol, [])
@@ -104,7 +161,16 @@ def _load_candidates(path: Path, asset_symbol: str, source: str) -> list:
     else:  # auto
         selected = cross if cross else single
 
-    return [candidate_from_dict(d) for d in selected], len(cross), len(single)
+    return (
+        [pattern_from_dict(d) for d in selected],
+        len(cross),
+        len(single),
+    )
+
+
+def _load_sequential_candidates(path: Path) -> list:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return [sequential_from_dict(d) for d in data.get("candidates", [])]
 
 
 def main() -> None:
@@ -126,22 +192,72 @@ def main() -> None:
         print(f"ERROR: data file not found: {csv_path}")
         return
 
-    # ── Candidates ──────────────────────────────────────────────────────────
-    candidates_path = Path(args.candidates)
-    if not candidates_path.exists():
-        print(f"ERROR: candidates JSON not found: {candidates_path}")
-        print("       Run research/generate_strategy_candidates.py first.")
-        return
-    candidates, n_cross, n_single = _load_candidates(
-        candidates_path, instrument.symbol, args.source
-    )
+    # ── Unified candidates (pattern + sequential) ──────────────────────────
+    unified_candidates = []
+    n_pattern_loaded = 0
+    n_sequence_loaded = 0
+
+    # Pattern side
+    if not args.no_patterns:
+        p_path = Path(args.pattern_candidates)
+        if p_path.exists():
+            p_cands, n_cross, n_single = _load_pattern_candidates(
+                p_path, instrument.symbol, args.source
+            )
+            unified_candidates.extend(wrap_pattern(c) for c in p_cands)
+            n_pattern_loaded = len(p_cands)
+            print(
+                f"  pattern candidates    : cross={n_cross} "
+                f"single({instrument.symbol})={n_single}  "
+                f"loaded={n_pattern_loaded}"
+            )
+        else:
+            print(f"  pattern candidates    : SKIP (not found: {p_path})")
+
+    # Sequential side
+    if not args.no_sequences:
+        seq_arg = args.sequential_candidates
+        if seq_arg is not None:
+            seq_path = Path(seq_arg)
+        else:
+            seq_path = DEFAULT_SEQUENTIAL_BY_ASSET.get(asset)
+        if seq_path is not None and seq_path.exists():
+            s_cands = _load_sequential_candidates(seq_path)
+            unified_candidates.extend(wrap_sequential(c) for c in s_cands)
+            n_sequence_loaded = len(s_cands)
+            print(
+                f"  sequential candidates : loaded={n_sequence_loaded}  "
+                f"from {seq_path.name}"
+            )
+        else:
+            print(
+                "  sequential candidates : SKIP "
+                f"(not found: {seq_path if seq_path else 'no default for asset'})"
+            )
+
     print(
-        f"  candidates: cross={n_cross} single({instrument.symbol})={n_single}"
-        f"  → using {len(candidates)}"
+        f"  → unified total       : {len(unified_candidates)}  "
+        f"(pattern={n_pattern_loaded}, sequence={n_sequence_loaded})"
     )
-    if not candidates:
+    if not unified_candidates:
         print("No candidates to evaluate.")
         return
+
+    # ── Optional edge-decay filter input ───────────────────────────────────
+    decay_status_by_name: dict[str, str] | None = None
+    if args.edge_decay_report:
+        decay_path = Path(args.edge_decay_report)
+        if decay_path.exists():
+            decay_status_by_name = _load_decay_statuses(decay_path)
+            print(
+                f"  edge-decay report     : loaded "
+                f"{len(decay_status_by_name)} statuses from {decay_path.name}"
+            )
+        else:
+            print(
+                f"  edge-decay report     : MISSING ({decay_path})  "
+                "→ skipping decay filter"
+            )
 
     # ── Bars + snapshots + compact matrix ──────────────────────────────────
     t0 = time.perf_counter()
@@ -191,12 +307,13 @@ def main() -> None:
     t = time.perf_counter()
     report = backtest_meta(
         df,
-        candidates,
+        unified_candidates,
         top_k_per_regime=args.top_k_per_regime,
         pre_filter=filt,
         apply_prefilter=not args.no_prefilter,
         selector_min_profit_factor=args.selector_min_pf,
         selector_min_expectancy=args.selector_min_expectancy,
+        decay_status_by_name=decay_status_by_name,
     )
     print(f"  meta backtest: {time.perf_counter() - t:.1f}s")
 

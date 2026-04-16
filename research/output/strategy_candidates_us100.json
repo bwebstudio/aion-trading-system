@@ -1,0 +1,1792 @@
+{
+  "generated_at": "2026-04-16T13:02:06.567911+00:00",
+  "asset": "US100.cash",
+  "discovery_params": {
+    "bars_limit": 120000,
+    "snapshots": 5000,
+    "max_conditions": 3,
+    "min_samples": 100,
+    "minimal_edge_threshold": 5e-05,
+    "top_discovery": 1000,
+    "train_fraction": 0.7,
+    "stability_tolerance": 0.5
+  },
+  "filter_thresholds": {
+    "min_trades": 50,
+    "min_profit_factor": 1.25,
+    "min_expectancy": 0.0
+  },
+  "execution_defaults": {
+    "stop_rule": {
+      "type": "atr_multiplier",
+      "period": 14,
+      "multiplier": 1.5
+    },
+    "exit_rule": {
+      "take_profit": {
+        "type": "atr_multiplier",
+        "period": 14,
+        "multiplier": 2.5
+      },
+      "max_hold_bars": 20
+    }
+  },
+  "cross_asset": [],
+  "single_asset": {
+    "US100.cash": [
+      {
+        "name": "LONG:momentum_3_bin=NEG AND session_bin=NY_MID AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 486,
+          "mean_test_return": 0.00045267288805916905,
+          "mean_train_return": 0.0003214895259588957,
+          "train_win_rate": 0.5753012048192772,
+          "test_win_rate": 0.6493506493506493,
+          "stability_score": 1.4080486345830312,
+          "score": 0.014051421920180725,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 94,
+          "winrate": 0.5212765957446809,
+          "expectancy": 0.00045879824597151655,
+          "avg_return": 0.00045879824597151655,
+          "profit_factor": 1.6783415054335389,
+          "max_drawdown": -0.009031144353915742,
+          "total_return": 0.04312703512132256
+        }
+      },
+      {
+        "name": "LONG:distance_to_session_high_bin=FAR AND session_bin=NY_MID AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 508,
+          "mean_test_return": 0.000637237390037626,
+          "mean_train_return": 0.0005836618365719914,
+          "train_win_rate": 0.6260869565217392,
+          "test_win_rate": 0.6625766871165644,
+          "stability_score": 1.0917921133584796,
+          "score": 0.015680974882080184,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 63,
+          "winrate": 0.5238095238095238,
+          "expectancy": 0.0004990468319016593,
+          "avg_return": 0.0004990468319016593,
+          "profit_factor": 1.6946179612586345,
+          "max_drawdown": -0.007010940235002514,
+          "total_return": 0.03143995040980453
+        }
+      },
+      {
+        "name": "LONG:session_bin=NY_MID AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "session_bin",
+            "NY_MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 1080,
+          "mean_test_return": 0.00029324335628189147,
+          "mean_train_return": 0.00025301307323388755,
+          "train_win_rate": 0.5597222222222222,
+          "test_win_rate": 0.6138888888888889,
+          "stability_score": 1.159004760243415,
+          "score": 0.011169282588969728,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 112,
+          "winrate": 0.5,
+          "expectancy": 0.0003733914345205624,
+          "avg_return": 0.0003733914345205624,
+          "profit_factor": 1.5151047022069208,
+          "max_drawdown": -0.010070996292942532,
+          "total_return": 0.04181984066630299
+        }
+      },
+      {
+        "name": "LONG:distance_to_session_high_bin=FAR AND momentum_3_bin=POS AND session_bin=NY_MID",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 300,
+          "mean_test_return": 0.0004381909966468811,
+          "mean_train_return": 0.0004307731578592211,
+          "train_win_rate": 0.554945054945055,
+          "test_win_rate": 0.6440677966101694,
+          "stability_score": 1.0172198259160896,
+          "score": 0.007720383848660506,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 51,
+          "winrate": 0.5294117647058824,
+          "expectancy": 0.00047930016712203615,
+          "avg_return": 0.00047930016712203615,
+          "profit_factor": 1.7868159309465774,
+          "max_drawdown": -0.0060428113441698544,
+          "total_return": 0.024444308523223844
+        }
+      },
+      {
+        "name": "LONG:distance_to_session_high_bin=FAR AND range_compression_bin=FALSE AND session_bin=NY_MID",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 290,
+          "mean_test_return": 0.00030013686046004295,
+          "mean_train_return": 0.0003767195448745042,
+          "train_win_rate": 0.553763440860215,
+          "test_win_rate": 0.5288461538461539,
+          "stability_score": 0.7967116772771291,
+          "score": 0.004072110148172871,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 72,
+          "winrate": 0.4722222222222222,
+          "expectancy": 0.00037157467595550484,
+          "avg_return": 0.00037157467595550484,
+          "profit_factor": 1.6242019161750256,
+          "max_drawdown": -0.005754036196782893,
+          "total_return": 0.026753376668796347
+        }
+      },
+      {
+        "name": "SHORT:momentum_5_bin=POS AND range_compression_bin=FALSE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 267,
+          "mean_test_return": -0.00047703739255666733,
+          "mean_train_return": -0.00032960352837108076,
+          "train_win_rate": 0.3825136612021858,
+          "test_win_rate": 0.30952380952380953,
+          "stability_score": 1.4473066927232638,
+          "score": -0.011281546131482183,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 97,
+          "winrate": 0.5463917525773195,
+          "expectancy": 0.00031753227400004665,
+          "avg_return": 0.00031753227400004665,
+          "profit_factor": 1.8020679958933299,
+          "max_drawdown": -0.007076792059244757,
+          "total_return": 0.030800630578004525
+        }
+      },
+      {
+        "name": "LONG:momentum_3_bin=NEG AND momentum_5_bin=POS AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 166,
+          "mean_test_return": 0.0003095924621447921,
+          "mean_train_return": 0.00023360736668109894,
+          "train_win_rate": 0.5877192982456141,
+          "test_win_rate": 0.6730769230769231,
+          "stability_score": 1.325268404602247,
+          "score": 0.005286256915308076,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 74,
+          "winrate": 0.4864864864864865,
+          "expectancy": 0.0003243939765101662,
+          "avg_return": 0.0003243939765101662,
+          "profit_factor": 1.4912869613202806,
+          "max_drawdown": -0.008060960315727377,
+          "total_return": 0.024005154261752298
+        }
+      },
+      {
+        "name": "LONG:momentum_3_bin=NEG AND range_compression_bin=FALSE AND session_bin=NY_MID",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 269,
+          "mean_test_return": 0.00030827653245069087,
+          "mean_train_return": 0.0002470202452968806,
+          "train_win_rate": 0.5792349726775956,
+          "test_win_rate": 0.5930232558139535,
+          "stability_score": 1.247980836875089,
+          "score": 0.006309929718488384,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 97,
+          "winrate": 0.4742268041237113,
+          "expectancy": 0.00027630584069889116,
+          "avg_return": 0.00027630584069889116,
+          "profit_factor": 1.43856808362459,
+          "max_drawdown": -0.0077377802829419,
+          "total_return": 0.02680166654779244
+        }
+      },
+      {
+        "name": "LONG:range_compression_bin=FALSE AND session_bin=NY_MID AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 433,
+          "mean_test_return": 0.00022048060782253742,
+          "mean_train_return": 0.00031738774850964546,
+          "train_win_rate": 0.5758620689655173,
+          "test_win_rate": 0.6153846153846154,
+          "stability_score": 0.6946727114006324,
+          "score": 0.0031870918858420095,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 100,
+          "winrate": 0.46,
+          "expectancy": 0.0002674818610075996,
+          "avg_return": 0.0002674818610075996,
+          "profit_factor": 1.3673147681807605,
+          "max_drawdown": -0.0111323213789256,
+          "total_return": 0.026748186100759963
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=GT_POS_2SIG AND range_compression_bin=FALSE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "GT_POS_2SIG"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "GT_POS_2SIG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 301,
+          "mean_test_return": -0.0001643284340389073,
+          "mean_train_return": -0.00031819083960726857,
+          "train_win_rate": 0.43349753694581283,
+          "test_win_rate": 0.4897959183673469,
+          "stability_score": 0.516446149869468,
+          "score": -0.001472383725799905,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 73,
+          "winrate": 0.5068493150684932,
+          "expectancy": 0.0003053874428186083,
+          "avg_return": 0.0003053874428186083,
+          "profit_factor": 1.6880450736023238,
+          "max_drawdown": -0.0078075440106442785,
+          "total_return": 0.022293283325758403
+        }
+      },
+      {
+        "name": "SHORT:range_compression_bin=FALSE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 599,
+          "mean_test_return": -0.0003084436757490039,
+          "mean_train_return": -0.0002361917868256569,
+          "train_win_rate": 0.41728395061728396,
+          "test_win_rate": 0.3711340206185567,
+          "stability_score": 1.30590347740025,
+          "score": -0.009858262078318204,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 126,
+          "winrate": 0.5,
+          "expectancy": 0.00021983312421948955,
+          "avg_return": 0.00021983312421948955,
+          "profit_factor": 1.5151486127430425,
+          "max_drawdown": -0.006046874748463651,
+          "total_return": 0.027698973651655683
+        }
+      },
+      {
+        "name": "LONG:distance_to_session_high_bin=FAR AND session_bin=NY_MID",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 685,
+          "mean_test_return": 0.00044761865865439177,
+          "mean_train_return": 0.0003540033067110926,
+          "train_win_rate": 0.5688073394495413,
+          "test_win_rate": 0.6144578313253012,
+          "stability_score": 1.264447676528909,
+          "score": 0.014813385670489709,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 82,
+          "winrate": 0.45121951219512196,
+          "expectancy": 0.0002671423280889106,
+          "avg_return": 0.0002671423280889106,
+          "profit_factor": 1.3709418575153436,
+          "max_drawdown": -0.007010940235002516,
+          "total_return": 0.02190567090329067
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_low_bin=FAR AND distance_to_vwap_bin=GT_POS_2SIG AND range_compression_bin=FALSE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "FAR"
+          ],
+          [
+            "distance_to_vwap_bin",
+            "GT_POS_2SIG"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "GT_POS_2SIG"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 300,
+          "mean_test_return": -0.0001643284340389073,
+          "mean_train_return": -0.0003154696023557335,
+          "train_win_rate": 0.43564356435643564,
+          "test_win_rate": 0.4897959183673469,
+          "stability_score": 0.5209010085656537,
+          "score": -0.0014826155211987457,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 72,
+          "winrate": 0.5,
+          "expectancy": 0.0002811522390776768,
+          "avg_return": 0.0002811522390776768,
+          "profit_factor": 1.6247652952063119,
+          "max_drawdown": -0.00780754401064428,
+          "total_return": 0.02024296121359273
+        }
+      },
+      {
+        "name": "LONG:distance_to_session_low_bin=FAR AND momentum_3_bin=NEG AND session_bin=NY_MID",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "FAR"
+          ],
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 278,
+          "mean_test_return": 0.00010861371265491471,
+          "mean_train_return": 8.28225674922578e-05,
+          "train_win_rate": 0.5238095238095238,
+          "test_win_rate": 0.6323529411764706,
+          "stability_score": 1.3114023863733497,
+          "score": 0.0023748874181827493,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 69,
+          "winrate": 0.4492753623188406,
+          "expectancy": 0.00027945363615222674,
+          "avg_return": 0.00027945363615222674,
+          "profit_factor": 1.3648731637676264,
+          "max_drawdown": -0.008533473663437598,
+          "total_return": 0.019282300894503647
+        }
+      },
+      {
+        "name": "LONG:distance_to_vwap_bin=MID AND session_bin=NY_MID AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 458,
+          "mean_test_return": 0.0003633445594459772,
+          "mean_train_return": 0.00029905367409810424,
+          "train_win_rate": 0.5886287625418061,
+          "test_win_rate": 0.6226415094339622,
+          "stability_score": 1.214981091744696,
+          "score": 0.00944758743503611,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 61,
+          "winrate": 0.45901639344262296,
+          "expectancy": 0.00029355140680504475,
+          "avg_return": 0.00029355140680504475,
+          "profit_factor": 1.349212321359698,
+          "max_drawdown": -0.011236590083113163,
+          "total_return": 0.01790663581510773
+        }
+      },
+      {
+        "name": "LONG:momentum_5_bin=POS AND session_bin=NY_MID AND time_of_day_bucket=T_16_20",
+        "direction": "LONG",
+        "pattern_key": [
+          [
+            "momentum_5_bin",
+            "POS"
+          ],
+          [
+            "session_bin",
+            "NY_MID"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_16_20"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_MID"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_16_20"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 604,
+          "mean_test_return": 0.00010136779746972024,
+          "mean_train_return": 0.0001937334891408682,
+          "train_win_rate": 0.5541237113402062,
+          "test_win_rate": 0.5787037037037037,
+          "stability_score": 0.5232332206437129,
+          "score": 0.0013035082660113298,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 91,
+          "winrate": 0.45054945054945056,
+          "expectancy": 0.00022198706580559688,
+          "avg_return": 0.00022198706580559688,
+          "profit_factor": 1.2927924905280646,
+          "max_drawdown": -0.012185573805762805,
+          "total_return": 0.020200822988309317
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 694,
+          "mean_test_return": -0.0002463545824866742,
+          "mean_train_return": -0.00034847488859668374,
+          "train_win_rate": 0.3655913978494624,
+          "test_win_rate": 0.3930131004366812,
+          "stability_score": 0.7069507460889066,
+          "score": -0.004588064740661871,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 122,
+          "winrate": 0.48360655737704916,
+          "expectancy": 0.00016465068747013075,
+          "avg_return": 0.00016465068747013075,
+          "profit_factor": 1.3587977310664592,
+          "max_drawdown": -0.00866287611334958,
+          "total_return": 0.020087383871355953
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=GT_POS_2SIG AND momentum_3_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "GT_POS_2SIG"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "GT_POS_2SIG"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 466,
+          "mean_test_return": -0.00026026356499642134,
+          "mean_train_return": -0.0004317753773648292,
+          "train_win_rate": 0.38263665594855306,
+          "test_win_rate": 0.43870967741935485,
+          "stability_score": 0.6027753749758438,
+          "score": -0.0033865838621458173,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 81,
+          "winrate": 0.49382716049382713,
+          "expectancy": 0.00019250197163254063,
+          "avg_return": 0.00019250197163254063,
+          "profit_factor": 1.370041514692255,
+          "max_drawdown": -0.009221254619127758,
+          "total_return": 0.01559265970223579
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=GT_POS_2SIG AND momentum_3_bin=POS AND momentum_5_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "GT_POS_2SIG"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "momentum_5_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "GT_POS_2SIG"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 377,
+          "mean_test_return": -0.00021675461903214455,
+          "mean_train_return": -0.00040697946678847075,
+          "train_win_rate": 0.3895582329317269,
+          "test_win_rate": 0.453125,
+          "stability_score": 0.5325935009512498,
+          "score": -0.0022414801578906924,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 74,
+          "winrate": 0.4864864864864865,
+          "expectancy": 0.00018585859396261112,
+          "avg_return": 0.00018585859396261112,
+          "profit_factor": 1.3563490536977876,
+          "max_drawdown": -0.008275047311467046,
+          "total_return": 0.013753535953233222
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=NEAR AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "NEAR"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "NEAR"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 340,
+          "mean_test_return": -0.000265576847596094,
+          "mean_train_return": -0.0003607184626162052,
+          "train_win_rate": 0.39906103286384975,
+          "test_win_rate": 0.36220472440944884,
+          "stability_score": 0.7362441214401068,
+          "score": -0.003605383859866702,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 51,
+          "winrate": 0.49019607843137253,
+          "expectancy": 0.00022094180047256768,
+          "avg_return": 0.00022094180047256768,
+          "profit_factor": 1.479309323417531,
+          "max_drawdown": -0.005378509426968407,
+          "total_return": 0.011268031824100952
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND momentum_3_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 405,
+          "mean_test_return": -0.00030909935594536364,
+          "mean_train_return": -0.00029993895441293716,
+          "train_win_rate": 0.39849624060150374,
+          "test_win_rate": 0.4316546762589928,
+          "stability_score": 1.0305408863958865,
+          "score": -0.006410484267898925,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 80,
+          "winrate": 0.5,
+          "expectancy": 0.00017548014631214225,
+          "avg_return": 0.00017548014631214225,
+          "profit_factor": 1.3966559173577227,
+          "max_drawdown": -0.008569919825826586,
+          "total_return": 0.01403841170497138
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_low_bin=FAR AND distance_to_vwap_bin=GT_POS_2SIG AND momentum_3_bin=POS",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_low_bin",
+            "FAR"
+          ],
+          [
+            "distance_to_vwap_bin",
+            "GT_POS_2SIG"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_low_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "GT_POS_2SIG"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 464,
+          "mean_test_return": -0.00023013447935227305,
+          "mean_train_return": -0.0004303684982005507,
+          "train_win_rate": 0.38387096774193546,
+          "test_win_rate": 0.44155844155844154,
+          "stability_score": 0.5347382076395167,
+          "score": -0.0026508301223492053,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 80,
+          "winrate": 0.4875,
+          "expectancy": 0.0001692792198758765,
+          "avg_return": 0.0001692792198758765,
+          "profit_factor": 1.3213837286261605,
+          "max_drawdown": -0.009221254619127754,
+          "total_return": 0.013542337590070121
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND range_compression_bin=FALSE AND session_bin=LONDON",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "range_compression_bin",
+            "FALSE"
+          ],
+          [
+            "session_bin",
+            "LONDON"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "FALSE"
+            },
+            {
+              "column": "session_bin",
+              "equals": "LONDON"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 246,
+          "mean_test_return": -0.00035256819683127105,
+          "mean_train_return": -0.00029955513309687376,
+          "train_win_rate": 0.38181818181818183,
+          "test_win_rate": 0.3076923076923077,
+          "stability_score": 1.1769726433539474,
+          "score": -0.00650844226404192,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 61,
+          "winrate": 0.4426229508196721,
+          "expectancy": 0.00014399604104273716,
+          "avg_return": 0.00014399604104273716,
+          "profit_factor": 1.307840191631902,
+          "max_drawdown": -0.01280411335086218,
+          "total_return": 0.008783758503606966
+        }
+      },
+      {
+        "name": "SHORT:distance_to_vwap_bin=MID AND range_compression_bin=TRUE AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_vwap_bin",
+            "MID"
+          ],
+          [
+            "range_compression_bin",
+            "TRUE"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_vwap_bin",
+              "equals": "MID"
+            },
+            {
+              "column": "range_compression_bin",
+              "equals": "TRUE"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 502,
+          "mean_test_return": -0.00018746481509879231,
+          "mean_train_return": -0.00021942683088127524,
+          "train_win_rate": 0.43630573248407645,
+          "test_win_rate": 0.4574468085106383,
+          "stability_score": 0.8543386164120625,
+          "score": -0.0035884067379868025,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 80,
+          "winrate": 0.4375,
+          "expectancy": 0.00012126643489006657,
+          "avg_return": 0.00012126643489006657,
+          "profit_factor": 1.266072016853095,
+          "max_drawdown": -0.007562797568309482,
+          "total_return": 0.009701314791205326
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND momentum_5_bin=NEG AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 446,
+          "mean_test_return": -0.0002721521013882011,
+          "mean_train_return": -0.00018360515241511166,
+          "train_win_rate": 0.4437299035369775,
+          "test_win_rate": 0.34814814814814815,
+          "stability_score": 1.4822683231290494,
+          "score": -0.008519339961565316,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 69,
+          "winrate": 0.4492753623188406,
+          "expectancy": 0.00012208473066850707,
+          "avg_return": 0.00012208473066850707,
+          "profit_factor": 1.2722485738271057,
+          "max_drawdown": -0.00894429022285998,
+          "total_return": 0.008423846416126987
+        }
+      },
+      {
+        "name": "SHORT:momentum_3_bin=NEG AND momentum_5_bin=NEG AND session_bin=NY_CLOSE",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "momentum_3_bin",
+            "NEG"
+          ],
+          [
+            "momentum_5_bin",
+            "NEG"
+          ],
+          [
+            "session_bin",
+            "NY_CLOSE"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "momentum_3_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "momentum_5_bin",
+              "equals": "NEG"
+            },
+            {
+              "column": "session_bin",
+              "equals": "NY_CLOSE"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 298,
+          "mean_test_return": -0.00010239844414172694,
+          "mean_train_return": -0.00013770355144515634,
+          "train_win_rate": 0.41228070175438597,
+          "test_win_rate": 0.34285714285714286,
+          "stability_score": 0.7436151287827135,
+          "score": -0.0013144670585514032,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 55,
+          "winrate": 0.43636363636363634,
+          "expectancy": 0.00013257706235640564,
+          "avg_return": 0.00013257706235640564,
+          "profit_factor": 1.251280610137625,
+          "max_drawdown": -0.005691921704567817,
+          "total_return": 0.00729173842960231
+        }
+      },
+      {
+        "name": "SHORT:distance_to_session_high_bin=FAR AND momentum_3_bin=POS AND time_of_day_bucket=T_12_16",
+        "direction": "SHORT",
+        "pattern_key": [
+          [
+            "distance_to_session_high_bin",
+            "FAR"
+          ],
+          [
+            "momentum_3_bin",
+            "POS"
+          ],
+          [
+            "time_of_day_bucket",
+            "T_12_16"
+          ]
+        ],
+        "entry_rule": {
+          "type": "AND",
+          "conditions": [
+            {
+              "column": "distance_to_session_high_bin",
+              "equals": "FAR"
+            },
+            {
+              "column": "momentum_3_bin",
+              "equals": "POS"
+            },
+            {
+              "column": "time_of_day_bucket",
+              "equals": "T_12_16"
+            }
+          ]
+        },
+        "stop_rule": {
+          "type": "atr_multiplier",
+          "period": 14,
+          "multiplier": 1.5
+        },
+        "exit_rule": {
+          "take_profit": {
+            "type": "atr_multiplier",
+            "period": 14,
+            "multiplier": 2.5
+          },
+          "max_hold_bars": 20
+        },
+        "expected_edge": {
+          "sample_size": 336,
+          "mean_test_return": -0.00040278691449202597,
+          "mean_train_return": -0.0003089024394284934,
+          "train_win_rate": 0.3699186991869919,
+          "test_win_rate": 0.32222222222222224,
+          "stability_score": 1.3039292122044428,
+          "score": -0.009627178111416263,
+          "assets_found": []
+        },
+        "backtest": {
+          "total_trades": 66,
+          "winrate": 0.48484848484848486,
+          "expectancy": 0.00011580794623105194,
+          "avg_return": 0.00011580794623105194,
+          "profit_factor": 1.2521390591043093,
+          "max_drawdown": -0.010639430116428605,
+          "total_return": 0.0076433244512494275
+        }
+      }
+    ]
+  }
+}

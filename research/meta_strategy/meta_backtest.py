@@ -49,16 +49,78 @@ from research.pattern_strategies.backtest_pattern_strategy import (
     BacktestReport,
     Trade,
     _build_report,
-    _entry_mask,
     _rule_multiplier,
-    backtest_candidate,
 )
 from research.pattern_strategies.strategy_candidate import StrategyCandidate
+from research.meta_strategy.unified import (
+    PATTERN,
+    SEQUENCE,
+    UnifiedCandidate,
+    backtest_for,
+    entry_mask_for,
+    wrap_pattern,
+)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Pre-filter
 # ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Edge-decay filter — applied BEFORE the standalone-backtest prefilter.
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# Allowed statuses — candidates whose decay report shows DECAYING / BROKEN
+# are dropped entirely.  Candidates not present in the report pass through
+# (they may simply not have been analysed yet).
+HEALTHY_DECAY_STATUSES: frozenset[str] = frozenset({"STABLE", "IMPROVING"})
+UNHEALTHY_DECAY_STATUSES: frozenset[str] = frozenset(
+    {"DECAYING", "BROKEN", "INSUFFICIENT_DATA"}
+)
+
+
+def decay_filter_candidates(
+    candidates: "list[UnifiedCandidate]",
+    decay_status_by_name: dict[str, str] | None,
+) -> tuple[list, dict[str, int], dict[str, str]]:
+    """
+    Keep only candidates with a healthy decay status.
+
+    Parameters
+    ----------
+    candidates:
+        UnifiedCandidate list (already tagged with [P]/[S] names —
+        matches the names stored in edge_decay_<asset>.json).
+    decay_status_by_name:
+        Mapping produced from edge_decay_<asset>.json.  `None` disables
+        the filter entirely (every candidate passes).
+
+    Returns
+    -------
+    (survivors, status_counts, excluded_reasons)
+
+    status_counts maps every status string to the number of input
+    candidates matched to it; `UNKNOWN` is used for candidates not
+    present in the decay report.  `excluded_reasons` maps excluded
+    candidate names to the reason ("DECAYING", "BROKEN", ...).
+    """
+    if decay_status_by_name is None:
+        return list(candidates), {"UNKNOWN": len(candidates)}, {}
+
+    survivors: list = []
+    counts: dict[str, int] = {}
+    excluded: dict[str, str] = {}
+    for cand in candidates:
+        status = decay_status_by_name.get(cand.name, "UNKNOWN")
+        counts[status] = counts.get(status, 0) + 1
+        if status in UNHEALTHY_DECAY_STATUSES:
+            excluded[cand.name] = status
+            continue
+        # STABLE / IMPROVING / UNKNOWN all pass through.
+        survivors.append(cand)
+    return survivors, counts, excluded
 
 
 @dataclass(frozen=True)
@@ -86,32 +148,36 @@ class CandidateFilter:
 
 def prefilter_candidates(
     df: "pd.DataFrame",
-    candidates: list[StrategyCandidate],
+    candidates: "list[UnifiedCandidate | StrategyCandidate]",
     *,
     filt: CandidateFilter | None = None,
-) -> tuple[list[StrategyCandidate], dict[str, BacktestReport], dict[str, str]]:
+) -> tuple[list, dict[str, BacktestReport], dict[str, str]]:
     """
     Standalone-backtest each candidate; return
     (survivors, reports_by_name, rejection_reasons_by_name).
 
-    Candidates that raise during replay (e.g. due to bin values absent
-    from the df) are treated as failing with reason "error".
+    Accepts both UnifiedCandidate and raw StrategyCandidate inputs.
+    Plain pattern StrategyCandidates are auto-wrapped so the dispatcher
+    can run the correct backtest implementation per kind.
+    Candidates that raise during replay are treated as failing with
+    reason "error".
     """
     filt = filt or CandidateFilter()
-    survivors: list[StrategyCandidate] = []
+    survivors: list = []
     reports: dict[str, BacktestReport] = {}
     reasons: dict[str, str] = {}
     for cand in candidates:
+        unified = cand if isinstance(cand, UnifiedCandidate) else wrap_pattern(cand)
         try:
-            rep = backtest_candidate(df, cand)
+            rep = backtest_for(df, unified)
         except Exception as exc:  # noqa: BLE001
-            reasons[cand.name] = f"error: {exc}"
+            reasons[unified.name] = f"error: {exc}"
             continue
-        reports[cand.name] = rep
+        reports[unified.name] = rep
         ok, reason = filt.passes(rep)
-        reasons[cand.name] = reason
+        reasons[unified.name] = reason
         if ok:
-            survivors.append(cand)
+            survivors.append(cand)  # preserve caller's original form
     return survivors, reports, reasons
 
 if TYPE_CHECKING:
@@ -137,14 +203,42 @@ class MetaBacktestReport:
     candidates_after_filter: int = 0
     prefilter_reports: dict[str, BacktestReport] = field(default_factory=dict)
     prefilter_rejections: dict[str, str] = field(default_factory=dict)
+    # Per-type counts for the unified pipeline
+    pattern_candidates_count: int = 0
+    sequence_candidates_count: int = 0
+    # Edge-decay filter diagnostics
+    candidates_before_decay_filter: int = 0
+    candidates_after_decay_filter: int = 0
+    decay_status_counts: dict[str, int] = field(default_factory=dict)
+    decay_excluded: dict[str, str] = field(default_factory=dict)
 
     def summary_lines(self) -> list[str]:
         lines: list[str] = []
         lines.append(
-            f"candidates_before_filter : {self.candidates_before_filter}"
+            f"candidates_before_decay_filter : {self.candidates_before_decay_filter}"
         )
         lines.append(
-            f"candidates_after_filter  : {self.candidates_after_filter}"
+            f"candidates_after_decay_filter  : {self.candidates_after_decay_filter}"
+        )
+        if self.decay_status_counts:
+            breakdown = "  ".join(
+                f"{k}={v}"
+                for k, v in sorted(
+                    self.decay_status_counts.items(), key=lambda kv: -kv[1]
+                )
+            )
+            lines.append(f"  decay status breakdown       : {breakdown}")
+        lines.append(
+            f"candidates_before_filter       : {self.candidates_before_filter}"
+        )
+        lines.append(
+            f"candidates_after_filter        : {self.candidates_after_filter}"
+        )
+        lines.append(
+            f"pattern_candidates             : {self.pattern_candidates_count}"
+        )
+        lines.append(
+            f"sequence_candidates            : {self.sequence_candidates_count}"
         )
         lines.append("")
         g = self.global_report
@@ -210,13 +304,14 @@ def _pseudo_candidate_with_trades(
 
 def backtest_meta(
     df: "pd.DataFrame",
-    candidates: list[StrategyCandidate],
+    candidates: "list[UnifiedCandidate | StrategyCandidate]",
     *,
     top_k_per_regime: int = 1,
     pre_filter: CandidateFilter | None = None,
     apply_prefilter: bool = True,
     selector_min_profit_factor: float = 1.3,
     selector_min_expectancy: float = 0.0,
+    decay_status_by_name: dict[str, str] | None = None,
 ) -> MetaBacktestReport:
     """
     Run the meta-strategy backtest.
@@ -245,20 +340,47 @@ def backtest_meta(
         raise ValueError(f"DataFrame missing required columns: {sorted(missing)}")
 
     n = len(df)
-    before_count = len(candidates)
+
+    # ── Normalise every input to UnifiedCandidate ──────────────────────────
+    # Raw StrategyCandidates come from earlier pattern-only callers; we
+    # auto-wrap so the unified code path works everywhere.
+    unified_candidates: list[UnifiedCandidate] = []
+    for c in candidates:
+        if isinstance(c, UnifiedCandidate):
+            unified_candidates.append(c)
+        else:
+            unified_candidates.append(wrap_pattern(c))
+
+    # ── Edge-decay filter ──────────────────────────────────────────────────
+    # Applied FIRST so we don't waste a standalone backtest on candidates
+    # we're going to drop anyway.  Disabled when `decay_status_by_name` is
+    # None — every candidate passes through untouched.
+    before_decay_count = len(unified_candidates)
+    unified_candidates, decay_status_counts, decay_excluded = (
+        decay_filter_candidates(unified_candidates, decay_status_by_name)
+    )
+    after_decay_count = len(unified_candidates)
+
+    before_count = len(unified_candidates)
 
     # ── Pre-filter stage ────────────────────────────────────────────────────
     if apply_prefilter:
         filt = pre_filter or CandidateFilter()
         survivors, prefilter_reports, prefilter_reasons = prefilter_candidates(
-            df, candidates, filt=filt
+            df, unified_candidates, filt=filt
         )
     else:
-        survivors = list(candidates)
+        survivors = list(unified_candidates)
         prefilter_reports = {}
         prefilter_reasons = {}
 
     after_count = len(survivors)
+    pattern_count = sum(
+        1 for c in unified_candidates if c.candidate_type == PATTERN
+    )
+    sequence_count = sum(
+        1 for c in unified_candidates if c.candidate_type == SEQUENCE
+    )
 
     if n == 0 or not survivors:
         return MetaBacktestReport(
@@ -268,6 +390,12 @@ def backtest_meta(
             candidates_after_filter=after_count,
             prefilter_reports=prefilter_reports,
             prefilter_rejections=prefilter_reasons,
+            pattern_candidates_count=pattern_count,
+            sequence_candidates_count=sequence_count,
+            candidates_before_decay_filter=before_decay_count,
+            candidates_after_decay_filter=after_decay_count,
+            decay_status_counts=decay_status_counts,
+            decay_excluded=decay_excluded,
         )
 
     # After the filter, `candidates` refers to survivors only.
@@ -291,14 +419,14 @@ def backtest_meta(
 
     # ── Precompute per-candidate entry masks (O(N) each, once) ─────────────
     # Only candidates that ACTIVELY trade (not NO_TRADE / None) need a mask.
-    active_cands: dict[str, StrategyCandidate] = {}
+    active_cands: dict[str, UnifiedCandidate] = {}
     for regime in ALL_REGIMES:
         cand = selector.active_for(regime)
         if cand is None or cand is NO_TRADE:
             continue
         active_cands[cand.name] = cand
     entry_masks: dict[str, np.ndarray] = {
-        name: _entry_mask(df, cand) for name, cand in active_cands.items()
+        name: entry_mask_for(df, cand) for name, cand in active_cands.items()
     }
 
     # ── Per-regime active candidate name (None / NO_TRADE / name) ─────────
@@ -427,6 +555,12 @@ def backtest_meta(
         candidates_after_filter=after_count,
         prefilter_reports=prefilter_reports,
         prefilter_rejections=prefilter_reasons,
+        pattern_candidates_count=pattern_count,
+        sequence_candidates_count=sequence_count,
+        candidates_before_decay_filter=before_decay_count,
+        candidates_after_decay_filter=after_decay_count,
+        decay_status_counts=decay_status_counts,
+        decay_excluded=decay_excluded,
     )
 
 

@@ -16,8 +16,11 @@ Public API
 
 from research.meta_strategy.meta_backtest import (
     CandidateFilter,
+    HEALTHY_DECAY_STATUSES,
     MetaBacktestReport,
+    UNHEALTHY_DECAY_STATUSES,
     backtest_meta,
+    decay_filter_candidates,
     prefilter_candidates,
 )
 from research.meta_strategy.regime_classifier import (
@@ -34,6 +37,17 @@ from research.meta_strategy.strategy_selector import (
     NO_TRADE,
     StrategySelector,
     allowed_regimes_for,
+    allowed_regimes_for_sequence,
+)
+from research.meta_strategy.unified import (
+    PATTERN,
+    SEQUENCE,
+    UnifiedCandidate,
+    backtest_for,
+    entry_mask_for,
+    wrap_many,
+    wrap_pattern,
+    wrap_sequential,
 )
 
 __all__ = [
@@ -46,10 +60,22 @@ __all__ = [
     "COMPRESSION",
     "StrategySelector",
     "allowed_regimes_for",
+    "allowed_regimes_for_sequence",
     "EXTREME_VWAP_BINS",
     "NO_TRADE",
+    "UnifiedCandidate",
+    "PATTERN",
+    "SEQUENCE",
+    "wrap_pattern",
+    "wrap_sequential",
+    "wrap_many",
+    "entry_mask_for",
+    "backtest_for",
     "backtest_meta",
     "MetaBacktestReport",
     "CandidateFilter",
     "prefilter_candidates",
+    "decay_filter_candidates",
+    "HEALTHY_DECAY_STATUSES",
+    "UNHEALTHY_DECAY_STATUSES",
 ]
